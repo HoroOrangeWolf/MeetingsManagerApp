@@ -13,13 +13,17 @@ import {
   Checkbox,
 } from 'native-base';
 
+import GlobalContext from './GlobalContext/GlobalContext';
+import { NavigationContainer } from '@react-navigation/native';
 export default function App() {
   return (
 
     <NativeBaseProvider>
-      <Box style={styles.container}>
-        <Login/>
-      </Box>
+      <NavigationContainer>
+        <GlobalContext>
+            <Login/>
+        </GlobalContext>
+      </NavigationContainer>
     </NativeBaseProvider>
   
   );
