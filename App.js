@@ -1,6 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { Button, StyleSheet, View } from 'react-native';
+
+import Login from './Login/Login';
+
 import {
   NativeBaseProvider,
   Box,
@@ -15,11 +18,7 @@ export default function App() {
 
     <NativeBaseProvider>
       <Box style={styles.container}>
-         <Checkbox
-        value="Jacek test"
-        accessibilityLabel="This is a dummy checkbox"
-        defaultIsChecked
-      />
+        <Login/>
       </Box>
     </NativeBaseProvider>
   
