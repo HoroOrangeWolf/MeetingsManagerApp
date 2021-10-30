@@ -8,7 +8,9 @@ import {
 } from 'native-base';
 import  { StyleSheet } from 'react-native';
 
-export default function  LogScreen({nextScreen}) {
+import { useGlobalContext } from '../GlobalContext/GlobalContext';
+
+export default function LogScreen({navigation}) {
 
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
@@ -16,8 +18,10 @@ export default function  LogScreen({nextScreen}) {
     const refLogin = useRef(null);
     const refPassword = useRef(null);
 
+    const {globalStyles} = useGlobalContext();
+
     return (
-        <Box style={logScreenStyles.logScreen}>
+        <Box style={globalStyles.logRegScreen}>
             <Text style={{fontSize: "30px",fontWeight: "700", textAlign: "center", paddingBottom: "50px"}}>Login</Text>
             <Input style={logScreenStyles.Input} ref={refLogin} value={login} onChangeText={()=>setLogin(refLogin.current.Text)} placeholder="Login"/>
             <Input style={logScreenStyles.Input} ref={refPassword} value={password} onChangeText={()=>setPassword(refPassword.current.Text)} placeholder="Register"/>
@@ -28,7 +32,7 @@ export default function  LogScreen({nextScreen}) {
                     </Text>
             </Button>
             
-            <Button style={logScreenStyles.button}>
+            <Button style={logScreenStyles.button} onPress={()=>navigation.navigate('RegisterScreen')}>
                     <Text style={{fontSize: "large", color: "white", fontWeight: "700"}}>
                         Register
                     </Text>
@@ -38,10 +42,7 @@ export default function  LogScreen({nextScreen}) {
 }
 
 const logScreenStyles = StyleSheet.create({
-    logScreen: {
-        width: "70vw",
-        height: "60%"
-    },
+
     Input: {
         width: "100%",
         marginTop: "15px",
