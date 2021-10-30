@@ -24,34 +24,32 @@ export const useGlobalContext = () =>{
 
 const globalStyles = StyleSheet.create({
     logRegScreen: {
-        width: "70vw",
-        alignItems: "center",
+        width: "70%",
         justifyContent: "center",
-        margin: "auto",
-        top: "-10vh",
+        marginLeft: "auto",
+        marginRight: "auto",
+        top: "-10%",
         flex: 1,
+        overflow: "visible",
     },
     Input: {
-        width: "100%",
-        marginTop: "15px",
         textAlign: "center",
+        marginTop: 15,
         backgroundColor: "#EEEEEE",
-        borderRadius: "10px",
+        borderRadius: 10,
     },
-    button: {
-        marginTop: "15px",
-        width: "100%",
-        borderRadius: "10px",
-        fontSize: "large",
+    button: {  
+        marginTop: 15,
+        height: "7%",
     },
     fatText: {
-        fontSize: "30px",
+        fontSize: 50,
+        paddingTop: 40,
         fontWeight: "700",
         textAlign: "center",
-        paddingBottom: "50px"
     },
     buttonText: {
-        fontSize: "large",
+        fontSize: 22,
         color: "white",
         fontWeight: "700",
     }
