@@ -16,7 +16,7 @@ export default function App() {
     <NativeBaseProvider>
       <Box style={styles.container}>
          <Checkbox
-        value="test"
+        value="abcd"
         accessibilityLabel="This is a dummy checkbox"
         defaultIsChecked
       />
