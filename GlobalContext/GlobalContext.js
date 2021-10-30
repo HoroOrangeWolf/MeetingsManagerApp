@@ -32,22 +32,27 @@ const globalStyles = StyleSheet.create({
         flex: 1,
         overflow: "visible",
     },
+
     Input: {
         textAlign: "center",
         marginTop: 15,
         backgroundColor: "#EEEEEE",
         borderRadius: 10,
+        fontSize: 22,
     },
+
     button: {  
         marginTop: 15,
         height: "7%",
     },
+
     fatText: {
         fontSize: 50,
         paddingTop: 40,
         fontWeight: "700",
         textAlign: "center",
     },
+
     buttonText: {
         fontSize: 22,
         color: "white",

@@ -21,9 +21,10 @@ export default function LogScreen({navigation}) {
 
     return (
         <Box style={globalStyles.logRegScreen}>
+
             <Text style={globalStyles.fatText}>Login</Text>
             <Input style={globalStyles.Input} ref={refLogin} value={login} onChangeText={()=>setLogin(refLogin.current.Text)} placeholder="Login"/>
-            <Input style={globalStyles.Input} ref={refPassword} value={password} onChangeText={()=>setPassword(refPassword.current.Text)} placeholder="Register"/>
+            <Input style={globalStyles.Input} ref={refPassword} value={password} onChangeText={()=>setPassword(refPassword.current.Text)} placeholder="Password"/>
 
             <Button style={globalStyles.button}>
                     <Text style={globalStyles.buttonText}>
