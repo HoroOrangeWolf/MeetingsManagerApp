@@ -6,7 +6,6 @@ const AppProvider = React.createContext();
 
 
 export default function GlobalContext({children}) {
-    const {globalStyles} = useGlobalContext();
  
     return (
         <AppProvider.Provider
@@ -27,9 +26,34 @@ const globalStyles = StyleSheet.create({
     logRegScreen: {
         width: "70vw",
         alignItems: "center",
-        marginTop: "20vh",
+        justifyContent: "center",
         margin: "auto",
+        top: "-10vh",
         flex: 1,
     },
+    Input: {
+        width: "100%",
+        marginTop: "15px",
+        textAlign: "center",
+        backgroundColor: "#EEEEEE",
+        borderRadius: "10px",
+    },
+    button: {
+        marginTop: "15px",
+        width: "100%",
+        borderRadius: "10px",
+        fontSize: "large",
+    },
+    fatText: {
+        fontSize: "30px",
+        fontWeight: "700",
+        textAlign: "center",
+        paddingBottom: "50px"
+    },
+    buttonText: {
+        fontSize: "large",
+        color: "white",
+        fontWeight: "700",
+    }
 }
 );
