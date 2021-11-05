@@ -28,9 +28,7 @@ export default function Login({handleLogin, handleRegister}){
         <LoginComponent.Provider value={{logInData, registerData,setLogInData, setRegisterData, onLogIn, onRegister}}>
 
              <Stack.Navigator initialRouteName="LogScreen" >
-                <Stack.Screen name="LogScreen" options={{headerShown: false}}>
-                    {(props)=><LogScreen {...props} onLogIn={onLogIn}/>}
-                </Stack.Screen>
+                <Stack.Screen name="LogScreen" component={LogScreen} options={{headerShown: false}}/>
                 <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={{headerShown: false}}/>
              </Stack.Navigator>
 
