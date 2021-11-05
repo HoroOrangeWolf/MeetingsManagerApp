@@ -10,6 +10,7 @@ import RegisterSecondScreen from './RegisterSecondScreen';
 
 const Stack = createNativeStackNavigator();
 
+const AppProvider = React.createContext();
 
 export default function RegisterScreen({navigation}) {
 
@@ -17,11 +18,13 @@ export default function RegisterScreen({navigation}) {
 
 
     return (
-        <Box width="100%" height="100%">
-            <Stack.Navigator initialRouteName="LogEmail">
-                <Stack.Screen name="LogEmail" component={RegisterFirstScreen} options={{headerShown: false}}/>
-                <Stack.Screen name="ConfirmPassword" component={RegisterSecondScreen} options={{headerShown: false}}/>
-            </Stack.Navigator>
-        </Box>
+        <AppProvider>
+            <Box width="100%" height="100%">
+                <Stack.Navigator initialRouteName="LogEmail">
+                    <Stack.Screen name="LogEmail" component={RegisterFirstScreen} options={{headerShown: false}}/>
+                    <Stack.Screen name="ConfirmPassword" component={RegisterSecondScreen} options={{headerShown: false}}/>
+                </Stack.Navigator>
+            </Box>
+        </AppProvider>
     );
 }

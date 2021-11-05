@@ -40,7 +40,7 @@ export default function LogScreen({navigation, onLogIn}) {
                             </Text>
                          </Button>
 
-                         <Button style={button}>
+                         <Button style={button} onPress={()=>navigation.navigate("RegisterScreen")}>
                              <Text style={buttonText}>
                                  Register
                              </Text>

@@ -7,27 +7,41 @@ import {
   Box,
   Button,
   Input,
+  FormControl,
+  Stack,
 } from 'native-base';
 
 export default function RegisterFirstScreen({navigation}) {
 
-    const {globalStyles: {input, button, fatText,logRegScreen, buttonText}} = useGlobalContext();
+    const {globalStyles: {input, button, label, labelText,logRegScreen, buttonText}} = useGlobalContext();
 
     return (
         <Box style={logRegScreen}>
 
-            <Text style={fatText}>Login</Text>
+            <FormControl>
+                <Stack space={2}>
+                    <FormControl.Label style={label}>
+                        <Text style={labelText}>Login</Text>
+                    </FormControl.Label>
+                    
+                    <Input style={input} type="text" placeholder="Login"/>
 
-            <Input style={input}  placeholder="Login"/>
-            
-            <Input style={input}  placeholder="Email"/>
+                    <FormControl.Label style={label}>
+                        <Text style={labelText}>Email</Text>
+                    </FormControl.Label>
 
-            <Button style={button} onPress={()=>navigation.navigate("ConfirmPassword")}>
-                
-                <Text style={buttonText}>
-                    Next
-                </Text>
-            </Button>
+                    <Input style={input}  placeholder="Email"/>
+
+                    <Box style={{marginTop: 25}}>
+                    
+                        <Button style={button} onPress={()=>navigation.navigate("ConfirmPassword")}>
+                            <Text style={buttonText}>
+                                 Next
+                            </Text>
+                         </Button>
+                    </Box>
+                </Stack> 
+            </FormControl>
         </Box>
     );
 }
