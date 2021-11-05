@@ -1,13 +1,12 @@
 import React, { useContext, useState } from 'react';
 
-import LogScreen from './LogScreen';
-import RegisterScreen from './RegisterScreen';
-
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const Stack = createNativeStackNavigator();
-const LoginComponent = React.createContext();
+import LogScreen from './LogScreen';
+import RegisterScreen from './RegisterScreen';
+import LoginComponentProvider from './LoginComponentProvider';
 
+const Stack = createNativeStackNavigator();
 
 export default function Login({handleLogin, handleRegister}){
     
@@ -25,17 +24,14 @@ export default function Login({handleLogin, handleRegister}){
     };
 
     return (
-        <LoginComponent.Provider value={{logInData, registerData,setLogInData, setRegisterData, onLogIn, onRegister}}>
+        <LoginComponentProvider value={{logInData, registerData,setLogInData, setRegisterData, onLogIn, onRegister}}>
 
              <Stack.Navigator initialRouteName="LogScreen" >
                 <Stack.Screen name="LogScreen" component={LogScreen} options={{headerShown: false}}/>
                 <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={{headerShown: false}}/>
              </Stack.Navigator>
 
-        </LoginComponent.Provider>
+        </LoginComponentProvider>
     );
 }
 
-export function useLogInContext() {
-    return useContext(LoginComponent);
-}
