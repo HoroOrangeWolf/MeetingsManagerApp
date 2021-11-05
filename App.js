@@ -2,15 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { Button, StyleSheet, View } from 'react-native';
 
-import Login from './Login/Login';
+import Login from './Login';
 
 import {
   NativeBaseProvider,
-  Box,
-  Body,
-  ListItem,
-  Text,
-  Checkbox,
 } from 'native-base';
 
 import GlobalContext from './GlobalContext/GlobalContext';
