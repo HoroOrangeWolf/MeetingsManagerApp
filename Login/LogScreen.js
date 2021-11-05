@@ -9,11 +9,13 @@ import {
 } from 'native-base';
 
 import { useGlobalContext } from '../GlobalContext/GlobalContext';
+import { useLogInContext } from '.';
 
-export default function LogScreen({navigation, onLogIn}) {
+export default function LogScreen({navigation}) {
 
     const {globalStyles: {label, input, labelText, button, logRegScreen, buttonText}} = useGlobalContext();
-    const [logData, setLogData] = useState({name: '', password: ''});
+
+    const {logInData,setLogInData, onLogIn} = useLogInContext();
     
     return (
         <Box style={logRegScreen}>
@@ -24,17 +26,17 @@ export default function LogScreen({navigation, onLogIn}) {
                         <Text style={labelText}>Login</Text>
                     </FormControl.Label>
                     
-                    <Input style={input} onChangeText={(value)=>setLogData({...logData, name: value})} type="text" placeholder="Login"/>
+                    <Input style={input} onChangeText={(value)=>setLogInData({...logInData, login: value})} type="text"/>
                     
                     <FormControl.Label style={label}>
                         <Text style={labelText}>Password</Text>
                     </FormControl.Label>
 
-                    <Input style={input} onChangeText={(value)=>setLogData({...logData, password: value})} type="password" placeholder="Password"/>
+                    <Input style={input} onChangeText={(value)=>setLogInData({...logInData, password: value})} type="password"/>
                     
                     <Box style={{marginTop: 25}}>
                     
-                        <Button style={button} type="submit" onPress={()=>onLogIn(logData)}>
+                        <Button style={button} type="submit" onPress={onLogIn}>
                             <Text style={buttonText}>
                                  Login
                             </Text>
@@ -45,6 +47,7 @@ export default function LogScreen({navigation, onLogIn}) {
                                  Register
                              </Text>
                          </Button>
+
                     </Box>
 
 

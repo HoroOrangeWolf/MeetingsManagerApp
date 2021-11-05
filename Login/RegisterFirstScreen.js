@@ -10,10 +10,13 @@ import {
   FormControl,
   Stack,
 } from 'native-base';
+import { useLogInContext } from '.';
 
 export default function RegisterFirstScreen({navigation}) {
 
     const {globalStyles: {input, button, label, labelText,logRegScreen, buttonText}} = useGlobalContext();
+
+    const {registerData, setRegisterData} = useLogInContext();
 
     return (
         <Box style={logRegScreen}>
@@ -24,13 +27,13 @@ export default function RegisterFirstScreen({navigation}) {
                         <Text style={labelText}>Login</Text>
                     </FormControl.Label>
                     
-                    <Input style={input} type="text" placeholder="Login"/>
+                    <Input style={input} onChangeText={(value)=>setRegisterData({...registerData, login: value})} type="text"/>
 
                     <FormControl.Label style={label}>
                         <Text style={labelText}>Email</Text>
                     </FormControl.Label>
 
-                    <Input style={input}  placeholder="Email"/>
+                    <Input style={input} onChangeText={(value)=>setRegisterData({...registerData, email: value})} />
 
                     <Box style={{marginTop: 25}}>
                     
