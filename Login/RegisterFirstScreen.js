@@ -10,13 +10,14 @@ import {
   FormControl,
   Stack,
 } from 'native-base';
-import { useLogInContext } from '.';
+import { useLoginComponentContext } from './LoginComponentProvider';
+
 
 export default function RegisterFirstScreen({navigation}) {
 
     const {globalStyles: {input, button, label, labelText,logRegScreen, buttonText}} = useGlobalContext();
 
-    const {registerData, setRegisterData} = useLogInContext();
+    const {registerData, setRegisterData} = useLoginComponentContext();
 
     return (
         <Box style={logRegScreen}>

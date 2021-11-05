@@ -10,13 +10,15 @@ import {
 
 import GlobalContext from './GlobalContext/GlobalContext';
 import { NavigationContainer } from '@react-navigation/native';
+import AddMeeting from './AddMeeting';
+
 export default function App() {
   return (
 
     <NativeBaseProvider>
       <NavigationContainer>
         <GlobalContext>
-            <Login/>
+            <AddMeeting/>
         </GlobalContext>
       </NavigationContainer>
     </NativeBaseProvider>

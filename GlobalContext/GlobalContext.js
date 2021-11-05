@@ -32,6 +32,14 @@ const globalStyles = StyleSheet.create({
         flex: 1,
         overflow: "visible",
     },
+    meetingDetailsScreen: {
+        width: "70%",
+        justifyContent: "center",
+        marginLeft: "auto",
+        marginRight: "auto",
+        flex: 1,
+        overflow: "visible",
+    },
 
     input: {
         textAlign: "center",
@@ -64,6 +72,11 @@ const globalStyles = StyleSheet.create({
     },  
     labelText: {
         fontSize: 16,
+    },
+    textArea: {
+        height: "40%",
+        backgroundColor: "#EEEEEE",
+        fontSize: 15,
     }
 
 }
