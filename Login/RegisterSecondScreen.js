@@ -11,7 +11,7 @@ import {
 
 export default function RegisterSecondScreen({navigation}) {
 
-    const {globalStyles: {input, button, logRegScreen, buttonText}} = useGlobalContext();
+    const {globalStyles: {input, button, fatText,logRegScreen, buttonText}} = useGlobalContext();
 
     return (
         <Box style={logRegScreen}>
