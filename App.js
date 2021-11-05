@@ -10,13 +10,15 @@ import {
 
 import GlobalContext from './GlobalContext/GlobalContext';
 import { NavigationContainer } from '@react-navigation/native';
+import MainScreen from './Main/MainScreen';
+
 export default function App() {
   return (
 
     <NativeBaseProvider>
       <NavigationContainer>
         <GlobalContext>
-            <Login/>
+            <MainScreen/>
         </GlobalContext>
       </NavigationContainer>
     </NativeBaseProvider>
