@@ -11,23 +11,22 @@ import {
 
 export default function RegisterFirstScreen({navigation}) {
 
-    const {globalStyles} = useGlobalContext();
+    const {globalStyles: {input, button, fatText,logRegScreen, buttonText}} = useGlobalContext();
 
     return (
-        <Box style={globalStyles.logRegScreen}>
+        <Box style={logRegScreen}>
 
-            <Text style={globalStyles.fatText}>Login</Text>
+            <Text style={fatText}>Login</Text>
 
-            <Input style={globalStyles.Input}  placeholder="Login"/>
+            <Input style={input}  placeholder="Login"/>
             
-            <Input style={globalStyles.Input}  placeholder="Email"/>
+            <Input style={input}  placeholder="Email"/>
 
-            <Button style={globalStyles.button} onPress={()=>navigation.navigate("ConfirmPassword")}>
+            <Button style={button} onPress={()=>navigation.navigate("ConfirmPassword")}>
                 
-                <Text style={globalStyles.buttonText}>
+                <Text style={buttonText}>
                     Next
                 </Text>
-
             </Button>
         </Box>
     );

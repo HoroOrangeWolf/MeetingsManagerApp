@@ -11,15 +11,15 @@ import {
 
 export default function RegisterSecondScreen({navigation}) {
 
-    const {globalStyles} = useGlobalContext();
+    const {globalStyles: {input, button, logRegScreen, buttonText}} = useGlobalContext();
 
     return (
-        <Box style={globalStyles.logRegScreen}>
-            <Text style={globalStyles.fatText}>Password</Text>
-            <Input style={globalStyles.Input}  placeholder="Password"/>
-            <Input style={globalStyles.Input}  placeholder="Confirm Password"/>
-            <Button style={globalStyles.button} >
-                <Text style={globalStyles.buttonText}>
+        <Box style={logRegScreen}>
+            <Text style={fatText}>Password</Text>
+            <Input style={input}  placeholder="Password"/>
+            <Input style={input}  placeholder="Confirm Password"/>
+            <Button style={button} >
+                <Text style={buttonText}>
                     Register
                 </Text>
             </Button>

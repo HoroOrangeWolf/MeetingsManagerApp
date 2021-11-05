@@ -33,17 +33,18 @@ const globalStyles = StyleSheet.create({
         overflow: "visible",
     },
 
-    Input: {
+    input: {
         textAlign: "center",
-        marginTop: 15,
         backgroundColor: "#EEEEEE",
         borderRadius: 10,
         fontSize: 22,
+        height: 50,
     },
 
     button: {  
         marginTop: 15,
-        height: "7%",
+        height: 50,
+        borderRadius: 10,
     },
 
     fatText: {
@@ -57,6 +58,13 @@ const globalStyles = StyleSheet.create({
         fontSize: 22,
         color: "white",
         fontWeight: "700",
+    },
+    label: {
+        
+    },  
+    labelText: {
+        fontSize: 16,
     }
+
 }
 );
