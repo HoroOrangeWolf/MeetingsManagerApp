@@ -18,6 +18,7 @@ export default function LogScreen({navigation}) {
     const {logInData,setLogInData, onLogIn} = useLogInContext();
     
     return (
+        
         <Box style={logRegScreen}>
             <FormControl>
                 <Stack space={2}>
@@ -49,9 +50,6 @@ export default function LogScreen({navigation}) {
                          </Button>
 
                     </Box>
-
-
-                    
 
                 </Stack>
             </FormControl>

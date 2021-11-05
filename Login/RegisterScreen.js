@@ -13,7 +13,7 @@ const Stack = createNativeStackNavigator();
 export default function RegisterScreen({navigation}) {
 
     const {globalStyles} = useGlobalContext();
-
+    
 
     return (
         
