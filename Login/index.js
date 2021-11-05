@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 
 import LogScreen from './LogScreen';
 import RegisterScreen from './RegisterScreen';
@@ -6,21 +6,38 @@ import RegisterScreen from './RegisterScreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
+const LoginComponent = React.createContext();
 
 
-export default function Login({onLogin, onRegister}){
+export default function Login({handleLogin, handleRegister}){
     
-    const onLogIn = (value) =>{
-        console.log(value);
-    }
+    
+    const [logInData, setLogInData] = useState({login: '', password: ''});
 
+    const [registerData, setRegisterData] = useState({email: '', password: '', login: ''});
+
+    const onLogIn = () =>{
+        handleLogin(logInData);
+    };
+
+    const onRegister = () =>{
+        handleRegister(logInData);
+    };
 
     return (
+        <LoginComponent.Provider value={{logInData, registerData,setLogInData, setRegisterData, onLogIn, onRegister}}>
+
              <Stack.Navigator initialRouteName="LogScreen" >
                 <Stack.Screen name="LogScreen" options={{headerShown: false}}>
                     {(props)=><LogScreen {...props} onLogIn={onLogIn}/>}
                 </Stack.Screen>
                 <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={{headerShown: false}}/>
              </Stack.Navigator>
+
+        </LoginComponent.Provider>
     );
+}
+
+export function useLogInContext() {
+    return useContext(LoginComponent);
 }

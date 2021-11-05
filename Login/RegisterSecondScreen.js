@@ -7,22 +7,44 @@ import {
   Box,
   Button,
   Input,
+  FormControl,
+  Stack,
 } from 'native-base';
+
+import { useLogInContext } from '.';
 
 export default function RegisterSecondScreen({navigation}) {
 
-    const {globalStyles: {input, button, fatText,logRegScreen, buttonText}} = useGlobalContext();
+    const {globalStyles: {input, button, labelText, label ,logRegScreen, buttonText}} = useGlobalContext();
+    const {registerData, setRegisterData, onRegister} = useLogInContext();
 
     return (
         <Box style={logRegScreen}>
-            <Text style={fatText}>Password</Text>
-            <Input style={input}  placeholder="Password"/>
-            <Input style={input}  placeholder="Confirm Password"/>
-            <Button style={button} >
-                <Text style={buttonText}>
-                    Register
-                </Text>
-            </Button>
+            <FormControl>
+                <Stack space={2}>
+                    <FormControl.Label style={label}>
+                        <Text style={labelText}>Password</Text>
+                    </FormControl.Label>
+                    
+                    <Input style={input} onChangeText={(value)=>setRegisterData({...registerData, password: value})} type="password"/>
+
+                    <FormControl.Label style={label}>
+                        <Text style={labelText}>ConfirmPassword</Text>
+                    </FormControl.Label>
+                    
+                    <Input style={input} type="password"/>
+
+                    <Box style={{marginTop: 25}}>
+                        <Button style={button} type="submit" onPress={onRegister}>
+                            <Text style={buttonText}>
+                                Register
+                            </Text>
+                        </Button>
+                    </Box>
+
+                </Stack>
+            </FormControl>
+            
         </Box>
     );
 }
