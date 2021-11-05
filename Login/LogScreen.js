@@ -1,42 +1,57 @@
 import React, { useRef, useState } from 'react'
-
 import {
   Text,
   Box,
   Button,
   Input,
+  FormControl,
+  Stack,
 } from 'native-base';
 
 import { useGlobalContext } from '../GlobalContext/GlobalContext';
 
-export default function LogScreen({navigation}) {
+export default function LogScreen({navigation, onLogIn}) {
 
-    const [login, setLogin] = useState('');
-    const [password, setPassword] = useState('');
-
-    const refLogin = useRef(null);
-    const refPassword = useRef(null);
-
-    const {globalStyles} = useGlobalContext();
-
+    const {globalStyles: {label, input, labelText, button, logRegScreen, buttonText}} = useGlobalContext();
+    const [logData, setLogData] = useState({name: '', password: ''});
+    
     return (
-        <Box style={globalStyles.logRegScreen}>
+        <Box style={logRegScreen}>
+            <FormControl>
+                <Stack space={2}>
+                    
+                    <FormControl.Label style={label}>
+                        <Text style={labelText}>Login</Text>
+                    </FormControl.Label>
+                    
+                    <Input style={input} onChangeText={(value)=>setLogData({...logData, name: value})} type="text" placeholder="Login"/>
+                    
+                    <FormControl.Label style={label}>
+                        <Text style={labelText}>Password</Text>
+                    </FormControl.Label>
 
-            <Text style={globalStyles.fatText}>Login</Text>
-            <Input style={globalStyles.Input} ref={refLogin} value={login} onChangeText={()=>setLogin(refLogin.current.Text)} placeholder="Login"/>
-            <Input style={globalStyles.Input} ref={refPassword} value={password} onChangeText={()=>setPassword(refPassword.current.Text)} placeholder="Password"/>
+                    <Input style={input} onChangeText={(value)=>setLogData({...logData, password: value})} type="password" placeholder="Password"/>
+                    
+                    <Box style={{marginTop: 25}}>
+                    
+                        <Button style={button} type="submit" onPress={()=>onLogIn(logData)}>
+                            <Text style={buttonText}>
+                                 Login
+                            </Text>
+                         </Button>
 
-            <Button style={globalStyles.button}>
-                    <Text style={globalStyles.buttonText}>
-                        Login
-                    </Text>
-            </Button>
-            
-            <Button style={globalStyles.button} onPress={()=>navigation.navigate('RegisterScreen')}>
-                    <Text style={globalStyles.buttonText}>
-                        Register
-                    </Text>
-            </Button>
+                         <Button style={button}>
+                             <Text style={buttonText}>
+                                 Register
+                             </Text>
+                         </Button>
+                    </Box>
+
+
+                    
+
+                </Stack>
+            </FormControl>
         </Box>
     );
 }
