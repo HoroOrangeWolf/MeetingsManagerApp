@@ -1,6 +1,6 @@
 import React from 'react'
 import MeettingDetails from './MeetingDetails';
-
+import MeetingAlarm from './MeetingAlarm';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MeetingSetup from './MeetingSetup';
@@ -15,6 +15,7 @@ export default function AddMeeting({navigation}) {
         <Stack.Navigator initialRouteName="MeetingDetails" >
             <Stack.Screen name="MeetingDetails" component={MeettingDetails} options={{headerShown: false}}/>
             <Stack.Screen name="MeetingSetup" component={MeetingSetup} options={{headerShown: false}}/>
+            <Stack.Screen name="MettingsAlarm" component={MeetingAlarm} options={{headerShown: false}}/>
         </Stack.Navigator>
     );
 }
