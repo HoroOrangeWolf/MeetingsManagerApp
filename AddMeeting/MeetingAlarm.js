@@ -9,7 +9,7 @@ import { useGlobalContext } from '../GlobalContext/GlobalContext';
 export default function MettingsAlarm({navigation}) {
     const {globalStyles: {meetingDetailsScreen, textArea, fatText, input, label, labelText, button, buttonText}} = useGlobalContext();
 
-    const [calendarDate, setCalendarDate] = useState(new Date());
+    const [calendarDate, setCalendarDate] = useState(new Date(0));
 
     const [isDatePicker, setIsDatePicker] = useState(false);
 
@@ -28,6 +28,16 @@ export default function MettingsAlarm({navigation}) {
             return;
         setCalendarDate(date);
     };
+
+    fetch('url',{
+        method: 'GET',
+    })
+        .then((data)=>{
+            return JSON.parse(data)
+        })
+        .then((data)=>{
+
+        })
 
 
 
