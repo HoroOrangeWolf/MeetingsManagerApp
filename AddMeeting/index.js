@@ -15,7 +15,7 @@ export default function AddMeeting({navigation}) {
         <Stack.Navigator initialRouteName="MeetingDetails" >
             <Stack.Screen name="MeetingDetails" component={MeettingDetails} options={{headerShown: false}}/>
             <Stack.Screen name="MeetingSetup" component={MeetingSetup} options={{headerShown: false}}/>
-            <Stack.Screen name="MettingsAlarm" component={MeetingAlarm} options={{headerShown: false}}/>
+            <Stack.Screen name="MeetingAlarm" component={MeetingAlarm} options={{headerShown: false}}/>
         </Stack.Navigator>
     );
 }

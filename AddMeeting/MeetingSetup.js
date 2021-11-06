@@ -61,7 +61,7 @@ export default function MeetingSetup({navigation}) {
                 </Stack>
 
                 <Box>
-                    <Button style={button}>
+                    <Button style={button} onPress={()=>navigation.navigate('MeetingAlarm')}>
                         <Text style={buttonText}>Next</Text>
                     </Button>
                 </Box>
