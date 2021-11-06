@@ -1,43 +1,27 @@
 import RNDateTimePicker from '@react-native-community/datetimepicker';
 import moment from 'moment';
-import { Box, Button, FormControl, HStack, Input, Stack, Text, TextArea } from 'native-base';
+import { Box, Button, FormControl, HStack, Input, Stack, Text } from 'native-base';
 import React, {useState} from 'react'
 import { useGlobalContext } from '../GlobalContext/GlobalContext';
+import { useAddMeetingContext } from './AddMeetingContext';
 
 //https://github.com/react-native-datetimepicker/datetimepicker
 
 export default function MettingsAlarm({navigation}) {
-    const {globalStyles: {meetingDetailsScreen, textArea, fatText, input, label, labelText, button, buttonText}} = useGlobalContext();
+    const {globalStyles: {meetingDetailsScreen, fatText, input, label, labelText, button, buttonText}} = useGlobalContext();
 
-    const [calendarDate, setCalendarDate] = useState(new Date(0));
+    const [isTimerPicker, setIsDatePicker] = useState(false);
 
-    const [isDatePicker, setIsDatePicker] = useState(false);
-
-    const [iTimerPicker, setIsTimePicker] = useState(false);
-
-    const onDatePick = (event, date) => {
-        setIsDatePicker(false);
-        if(date === undefined)
-            return;
-        setCalendarDate(date);
-    };
+    const {meeting, setMeeting, onFinishClick} = useAddMeetingContext();
 
     const onTimePick = (event, date) => {
-        setIsTimePicker(false);
+        setIsDatePicker(false);
+        
         if(date === undefined)
             return;
-        setCalendarDate(date);
+
+        setMeeting({...meeting, alarm: date});
     };
-
-    fetch('url',{
-        method: 'GET',
-    })
-        .then((data)=>{
-            return JSON.parse(data)
-        })
-        .then((data)=>{
-
-        })
 
 
 
@@ -45,34 +29,25 @@ export default function MettingsAlarm({navigation}) {
         <Box style={meetingDetailsScreen}>
 
             <HStack style={{marginBottom: 50}}>
-                <Text style={{...fatText, fontSize: 40}}>Meeting Time</Text>
+                <Text style={{...fatText, fontSize: 40}}>Set Notification</Text>
             </HStack>
 
             <FormControl>
                 <Stack space={2}>
 
                     <FormControl.Label style={label}>
-                        <Text style={labelText}>Pick Date</Text>
+                        <Text style={labelText}>Pick Time</Text>
                     </FormControl.Label>
 
-                    <Input  style={input} onPressIn={()=>setIsDatePicker(!isDatePicker)} editable={!isDatePicker} value={moment(calendarDate).format('DD/MM/YYYY')} type="text"/>
+                    <Input  style={input} onPressIn={()=>setIsDatePicker(!isTimerPicker)} editable={!isTimerPicker} value={moment(meeting.alarm).format('HH:mm')} type="text"/>
 
-                    {isDatePicker && <RNDateTimePicker value={calendarDate} mode="date" onChange={onDatePick}/>}
-
-                    <FormControl.Label style={label}>
-                        <Text style={labelText}>Pick Hour</Text>
-                    </FormControl.Label>
-
-                    <Input  style={input} onPressIn={()=>setIsTimePicker(!iTimerPicker)} editable={!iTimerPicker} value={moment(calendarDate).format('HH:mm')} type="text"/>
-
-                    {iTimerPicker &&<RNDateTimePicker value={calendarDate} mode="time" onChange={onTimePick}/>}
-
+                    {isTimerPicker && <RNDateTimePicker value={calendarDate} mode="date" onChange={onTimePick}/>}
 
                 </Stack>
 
                 <Box>
-                    <Button style={button}>
-                        <Text style={buttonText}>Next</Text>
+                    <Button style={button} onPress={onFinishClick}>
+                        <Text style={buttonText}>Finish</Text>
                     </Button>
                 </Box>
 

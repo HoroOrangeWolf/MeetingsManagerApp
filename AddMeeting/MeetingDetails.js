@@ -1,10 +1,13 @@
 import { Box, Button, FormControl, HStack, Input, Stack, Text, TextArea } from 'native-base';
 import React, {useState} from 'react'
 import { useGlobalContext } from '../GlobalContext/GlobalContext';
+import { useAddMeetingContext } from './AddMeetingContext';
 
 export default function MeettingDetails({navigation}) {
     
     const {globalStyles: {meetingDetailsScreen, textArea, fatText, input, label, labelText, button, buttonText}} = useGlobalContext();
+    const {meeting, setMeeting} = useAddMeetingContext();
+
     return (
         <Box style={meetingDetailsScreen}>
 
@@ -18,12 +21,14 @@ export default function MeettingDetails({navigation}) {
                     <FormControl.Label style={label}>
                         <Text style={labelText}>Meeting </Text>
                     </FormControl.Label>
-                    <Input style={input}/>
+
+                    <Input style={input} onChangeText={val=>setMeeting({...meeting, name: val})}/>
+
                     <FormControl.Label>
                         <Text style={labelText}>Description</Text>
                     </FormControl.Label>
 
-                    <TextArea style={textArea}/>
+                    <TextArea style={textArea} onChangeText={val=>setMeeting({...meeting, description: val})}/>
                 </Stack>
 
                 <Box>
