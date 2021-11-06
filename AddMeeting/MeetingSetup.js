@@ -2,9 +2,11 @@ import { Box, Button, FormControl, HStack, Input, Stack, Text, TextArea } from '
 import React, {useState} from 'react'
 import { useGlobalContext } from '../GlobalContext/GlobalContext';
 
-export default function MeettingDetails({navigation}) {
-    
+//https://github.com/react-native-datetimepicker/datetimepicker
+
+export default function MeetingSetup({navigation}) {
     const {globalStyles: {meetingDetailsScreen, textArea, fatText, input, label, labelText, button, buttonText}} = useGlobalContext();
+
     return (
         <Box style={meetingDetailsScreen}>
 
@@ -18,7 +20,7 @@ export default function MeettingDetails({navigation}) {
                     <FormControl.Label style={label}>
                         <Text style={labelText}>Meeting </Text>
                     </FormControl.Label>
-                    <Input style={input}/>
+
                     <FormControl.Label>
                         <Text style={labelText}>Description</Text>
                     </FormControl.Label>
@@ -27,7 +29,7 @@ export default function MeettingDetails({navigation}) {
                 </Stack>
 
                 <Box>
-                    <Button style={button} onPress={()=>navigation.navigate('MeetingSetup')}>
+                    <Button style={button}>
                         <Text style={buttonText}>Next</Text>
                     </Button>
                 </Box>
@@ -36,5 +38,4 @@ export default function MeettingDetails({navigation}) {
             </FormControl>
         </Box>
     );
-
 }
