@@ -6,7 +6,7 @@ import { useGlobalContext } from '../GlobalContext/GlobalContext';
 
 //https://github.com/react-native-datetimepicker/datetimepicker
 
-export default function MeetingSetup({navigation}) {
+export default function MettingsAlarm({navigation}) {
     const {globalStyles: {meetingDetailsScreen, textArea, fatText, input, label, labelText, button, buttonText}} = useGlobalContext();
 
     const [calendarDate, setCalendarDate] = useState(new Date());
