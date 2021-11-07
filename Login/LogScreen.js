@@ -16,7 +16,7 @@ export default function LogScreen({navigation}) {
 
     const {globalStyles: {label, input, labelText, button, logRegScreen, buttonText}} = useGlobalContext();
 
-    const {logInData,setLogInData, onLogIn} = useLoginComponentContext();
+    const {logInData, setLogInData, onLogIn} = useLoginComponentContext();
     
     return (
         

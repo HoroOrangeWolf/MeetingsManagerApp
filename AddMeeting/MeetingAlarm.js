@@ -41,7 +41,7 @@ export default function MettingsAlarm({navigation}) {
 
                     <Input  style={input} onPressIn={()=>setIsDatePicker(!isTimerPicker)} editable={!isTimerPicker} value={moment(meeting.alarm).format('HH:mm')} type="text"/>
 
-                    {isTimerPicker && <RNDateTimePicker value={calendarDate} mode="date" onChange={onTimePick}/>}
+                    {isTimerPicker && <RNDateTimePicker value={meeting.alarm} mode="time" onChange={onTimePick}/>}
 
                 </Stack>
 

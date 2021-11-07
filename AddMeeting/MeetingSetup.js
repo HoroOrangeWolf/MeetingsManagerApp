@@ -22,7 +22,7 @@ export default function MeetingSetup({navigation}) {
         if(date === undefined)
             return;
 
-        setMeeting({...meeting, calendarDate});
+        setMeeting({...meeting, calendarDate: date});
     };
 
     const onTimePick = (event, date) => {
@@ -32,7 +32,7 @@ export default function MeetingSetup({navigation}) {
         if(date === undefined)
             return;
 
-        setMeeting({...meeting, calendarDate});
+        setMeeting({...meeting, calendarDate: date});
     };
 
 
@@ -53,15 +53,15 @@ export default function MeetingSetup({navigation}) {
 
                     <Input  style={input} onPressIn={()=>setIsDatePicker(!isDatePicker)} editable={!isDatePicker} value={moment(meeting.calendarDate).format('DD/MM/YYYY')} type="text"/>
 
-                    {isDatePicker && <RNDateTimePicker value={calendarDate} mode="date" onChange={onDatePick}/>}
+                    {isDatePicker && <RNDateTimePicker value={meeting.calendarDate} mode="date" onChange={onDatePick}/>}
 
                     <FormControl.Label style={label}>
                         <Text style={labelText}>Pick Hour</Text>
                     </FormControl.Label>
 
-                    <Input  style={input} onPressIn={()=>setIsTimePicker(!iTimerPicker)} editable={!iTimerPicker} value={moment(meeting.calendarDate).format('HH:mm')} type="text"/>
+                    <Input style={input} onPressIn={()=>setIsTimePicker(!iTimerPicker)} editable={!iTimerPicker} value={moment(meeting.calendarDate).format('HH:mm')} type="text"/>
 
-                    {iTimerPicker &&<RNDateTimePicker value={calendarDate} mode="time" onChange={onTimePick}/>}
+                    {iTimerPicker &&<RNDateTimePicker value={meeting.calendarDate} mode="time" onChange={onTimePick}/>}
 
 
                 </Stack>
