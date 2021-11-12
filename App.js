@@ -12,6 +12,7 @@ import GlobalContext from './GlobalContext/GlobalContext';
 import { NavigationContainer } from '@react-navigation/native';
 import AddMeeting from './AddMeeting';
 
+
 export default function App() {
   return (
 
@@ -25,6 +26,7 @@ export default function App() {
   
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
