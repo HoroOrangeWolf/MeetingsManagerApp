@@ -8,6 +8,8 @@ import LoginComponentProvider from './LoginComponentProvider';
 
 const Stack = createNativeStackNavigator();
 
+import { useGlobalContext } from '../GlobalContext/GlobalContext';
+
 export default function Login({handleLogin, handleRegister}){
     
     
@@ -15,12 +17,20 @@ export default function Login({handleLogin, handleRegister}){
 
     const [registerData, setRegisterData] = useState({email: '', password: '', login: ''});
 
+    const {registerUser} = useGlobalContext();
+
     const onLogIn = () =>{
         handleLogin(logInData);
     };
 
     const onRegister = () =>{
-        handleRegister(logInData);
+        registerUser(registerData.email, registerData.password)
+            .then((c)=>{
+                console.log(c);
+            })
+            .catch(er=>{
+                console.log(er);
+            })
     };
 
     return (

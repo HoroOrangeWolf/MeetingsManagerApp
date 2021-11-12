@@ -19,7 +19,7 @@ export default function App() {
     <NativeBaseProvider>
       <NavigationContainer>
         <GlobalContext>
-            <AddMeeting/>
+            <Login/>
         </GlobalContext>
       </NavigationContainer>
     </NativeBaseProvider>

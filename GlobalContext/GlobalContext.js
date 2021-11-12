@@ -24,9 +24,17 @@ const AppProvider = React.createContext();
 
 export default function GlobalContext({children}) {
  
+
+    const registerUser = async (email, password) =>{
+        const userc = await createUserWithEmailAndPassword(auth, email, password);
+
+        return userc;
+    };
+    
+
     return (
         <AppProvider.Provider
-            value={{globalStyles}}
+            value={{globalStyles, registerUser}}
         >
             {
                 children
