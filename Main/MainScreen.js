@@ -2,6 +2,11 @@ import React from 'react';
 import { Text } from 'native-base';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
+import Home from '../Home/Home';
+import Scanner from '../Scanner/Scanner';
+import Help from '../Help/Help';
+import LogOut from '../LogOut/LogOut';
+
 const DrawerNav = createDrawerNavigator();
 
 const MainScreen = () => {
@@ -13,38 +18,6 @@ const MainScreen = () => {
         <DrawerNav.Screen name="Wyloguj" component={LogOut} />
     </DrawerNav.Navigator>
   )
-}
-
-function Home() {
-  return (
-    <Text>
-        Home drawer
-    </Text>
-  );
-}
-
-function Scanner() {
-  return (
-    <Text>
-        Scanner drawer
-    </Text>
-  );
-}
-
-function Help() {
-  return (
-    <Text>
-        Help drawer
-    </Text>
-  );
-}
-
-function LogOut() {
-  return (
-    <Text>
-        LogOut drawer
-    </Text>
-  );
 }
 
 export default MainScreen;
