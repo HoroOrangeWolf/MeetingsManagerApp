@@ -12,7 +12,7 @@ import GlobalContext from './GlobalContext/GlobalContext';
 import { NavigationContainer } from '@react-navigation/native';
 
 import AddMeeting from './AddMeeting';
-import Scanner from './Scanner/Scanner';
+import Scanner from './Scanner';
 
 
 export default function App() {
