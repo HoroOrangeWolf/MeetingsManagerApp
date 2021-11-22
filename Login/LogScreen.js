@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React from 'react'
 import {
   Text,
   Box,
@@ -9,15 +9,17 @@ import {
 } from 'native-base';
 
 import { useGlobalContext } from '../GlobalContext/GlobalContext';
-import { useLogInContext } from '.';
+import { useLoginComponentContext } from './LoginComponentProvider';
+
 
 export default function LogScreen({navigation}) {
 
     const {globalStyles: {label, input, labelText, button, logRegScreen, buttonText}} = useGlobalContext();
 
-    const {logInData,setLogInData, onLogIn} = useLogInContext();
+    const {logInData, setLogInData, onLogIn} = useLoginComponentContext();
     
     return (
+        
         <Box style={logRegScreen}>
             <FormControl>
                 <Stack space={2}>
@@ -49,9 +51,6 @@ export default function LogScreen({navigation}) {
                          </Button>
 
                     </Box>
-
-
-                    
 
                 </Stack>
             </FormControl>

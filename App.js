@@ -10,7 +10,9 @@ import {
 
 import GlobalContext from './GlobalContext/GlobalContext';
 import { NavigationContainer } from '@react-navigation/native';
-import MainScreen from './Main/MainScreen';
+
+import AddMeeting from './AddMeeting';
+
 
 export default function App() {
   return (
@@ -18,13 +20,15 @@ export default function App() {
     <NativeBaseProvider>
       <NavigationContainer>
         <GlobalContext>
-            <MainScreen/>
+
+            <AddMeeting/>
         </GlobalContext>
       </NavigationContainer>
     </NativeBaseProvider>
   
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {

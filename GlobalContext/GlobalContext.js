@@ -2,8 +2,25 @@ import React, { useContext } from 'react';
 
 import { StyleSheet } from 'react-native';
 
-const AppProvider = React.createContext();
+import { initializeApp } from "firebase/app";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDM5mFLrS_XBpeYOtfm8cUQVQXI4GdmMV0",
+  authDomain: "meetingsmanagerapp.firebaseapp.com",
+  projectId: "meetingsmanagerapp",
+  storageBucket: "meetingsmanagerapp.appspot.com",
+  messagingSenderId: "773403299384",
+  appId: "1:773403299384:web:a85891506a2bd9c8dea0cd",
+  measurementId: "G-WE7JWM3V6F"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth();
+
+
+const AppProvider = React.createContext();
 
 export default function GlobalContext({children}) {
  
@@ -29,6 +46,14 @@ const globalStyles = StyleSheet.create({
         marginLeft: "auto",
         marginRight: "auto",
         top: "-10%",
+        flex: 1,
+        overflow: "visible",
+    },
+    meetingDetailsScreen: {
+        width: "70%",
+        justifyContent: "center",
+        marginLeft: "auto",
+        marginRight: "auto",
         flex: 1,
         overflow: "visible",
     },
@@ -64,6 +89,11 @@ const globalStyles = StyleSheet.create({
     },  
     labelText: {
         fontSize: 16,
+    },
+    textArea: {
+        height: "40%",
+        backgroundColor: "#EEEEEE",
+        fontSize: 15,
     }
 
 }
