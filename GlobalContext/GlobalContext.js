@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
 
 
 const firebaseConfig = {
@@ -30,11 +30,17 @@ export default function GlobalContext({children}) {
 
         return userc;
     };
+
+    const loginUser = async (email, password) => {
+        const userc = await signInWithEmailAndPassword(auth, email, password);
+        console.log(userc);
+        return userc;
+    }
     
 
     return (
         <AppProvider.Provider
-            value={{globalStyles, registerUser}}
+            value={{globalStyles, registerUser, loginUser}}
         >
             {
                 children

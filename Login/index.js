@@ -17,10 +17,12 @@ export default function Login({handleLogin, handleRegister}){
 
     const [registerData, setRegisterData] = useState({email: '', password: '', login: ''});
 
-    const {registerUser} = useGlobalContext();
+    const {registerUser, loginUser} = useGlobalContext();
 
     const onLogIn = () =>{
-        handleLogin(logInData);
+        loginUser(logInData.login, logInData.password)
+        .then(v=>console.log(v))
+        .catch(v=>console.log(v));
     };
 
     const onRegister = () =>{
