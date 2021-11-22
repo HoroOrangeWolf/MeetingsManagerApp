@@ -10,6 +10,7 @@ import {
 
 import GlobalContext from './GlobalContext/GlobalContext';
 import { NavigationContainer } from '@react-navigation/native';
+
 import AddMeeting from './AddMeeting';
 
 
@@ -19,6 +20,7 @@ export default function App() {
     <NativeBaseProvider>
       <NavigationContainer>
         <GlobalContext>
+
             <AddMeeting/>
         </GlobalContext>
       </NavigationContainer>
