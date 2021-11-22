@@ -12,6 +12,7 @@ import GlobalContext from './GlobalContext/GlobalContext';
 import { NavigationContainer } from '@react-navigation/native';
 
 import AddMeeting from './AddMeeting';
+import Scanner from './Scanner/Scanner';
 
 
 export default function App() {
@@ -20,8 +21,7 @@ export default function App() {
     <NativeBaseProvider>
       <NavigationContainer>
         <GlobalContext>
-
-            <AddMeeting/>
+            <Scanner/>
         </GlobalContext>
       </NavigationContainer>
     </NativeBaseProvider>

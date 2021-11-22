@@ -24,7 +24,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.MeetingMenager.App"
+      "package": "com.MeetingMenager.App",
       "permissions":["CAMERA"]
 
     },
