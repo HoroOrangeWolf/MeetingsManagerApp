@@ -27,11 +27,11 @@ export default function Scanner() {
 
   return (
     <View style={styles.container}>
-      <BarCodeScanner
-        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-        style={StyleSheet.absoluteFillObject}
-      />
       {scanned && <Button title={'Tap to Scan Again'} onPress={() => setScanned(false)} />}
+      {!scanned && <BarCodeScanner 
+        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+        style={StyleSheet.absoluteFillObject}>
+      </BarCodeScanner>}
     </View>
   );
 }
