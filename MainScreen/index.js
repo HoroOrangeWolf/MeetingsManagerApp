@@ -6,6 +6,7 @@ import Home from '../Home';
 import Scanner from '../Scanner';
 import Help from '../Help/Help';
 import LogOut from '../LogOut/LogOut';
+import Authors from '../Authors';
 
 const DrawerNav = createDrawerNavigator();
 
@@ -15,6 +16,7 @@ const MainScreen = () => {
         <DrawerNav.Screen name="Home" component={Home} />
         <DrawerNav.Screen name="Zeskanuj kod QR" component={Scanner} />
         <DrawerNav.Screen name="Pomoc" component={Help} />
+        <DrawerNav.Screen name="Autorzy" component={Authors} />
         <DrawerNav.Screen name="Wyloguj" component={LogOut} />
     </DrawerNav.Navigator>
   )
