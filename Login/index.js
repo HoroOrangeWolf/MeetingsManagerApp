@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+
 import LogScreen from './LogScreen';
 import RegisterScreen from './RegisterScreen';
 import LoginComponentProvider from './LoginComponentProvider';

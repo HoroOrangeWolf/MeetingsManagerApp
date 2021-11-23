@@ -2,7 +2,7 @@ import React from 'react';
 import { Text } from 'native-base';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import Home from '../Home/Home';
+import Home from '../Home';
 import Scanner from '../Scanner';
 import Help from '../Help/Help';
 import LogOut from '../LogOut/LogOut';

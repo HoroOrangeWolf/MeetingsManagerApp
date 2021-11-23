@@ -1,37 +1,38 @@
 import React from "react"
+
 import { Box,FlatList,Heading,Avatar,HStack,VStack,Text,Spacer,Center,NativeBaseProvider, } from "native-base"
 export const Example = () => {
   const data = [
     {
       id: "1",
-      fullName: "Aafreen Khan",
-      timeStamp: "12:47",
-      recentText: "Good Day!",
+      fullName: "Tytul1",
+      timeStamp: "Godzina",
+      recentText: "Opis1",
       
     },
     {
       id: "2",
-      fullName: "Sujitha Mathur",
-      timeStamp: "11:11",
-      recentText: "Cheer up, there!",
+      fullName: "Tytul2",
+      timeStamp: "Godzina",
+      recentText: "Opis2",
     },
     {
       id: "3",
-      fullName: "Anci Barroco",
-      timeStamp: "6:22",
-      recentText: "Good Day!",
+      fullName: "Tytul3",
+      timeStamp: "Godzina",
+      recentText: "Opis3",
     },
     {
       id: "4",
-      fullName: "Aniket Kumar",
-      timeStamp: "8:56 ",
-      recentText: "All the best",
+      fullName: "Tytul4",
+      timeStamp: "Godzina",
+      recentText: "Opis4",
     },
     {
       id: "5",
-      fullName: "Kiara",
-      timeStamp: "12:47",
-      recentText: "I will call today.",
+      fullName: "Tytul5",
+      timeStamp: "Godzina",
+      recentText: "Opis5",
     },
   ]
   return (
@@ -48,7 +49,7 @@ export const Example = () => {
         data={data}
         renderItem={({ item }) => (
           <Box
-            borderBottomWidth="1"
+            borderBottomWidth="4"
             _dark={{
               borderColor: "gray.600",
             }}
