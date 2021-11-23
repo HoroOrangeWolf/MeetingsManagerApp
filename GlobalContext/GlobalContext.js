@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 
 import { StyleSheet } from 'react-native';
 
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 
 const firebaseConfig = {
@@ -18,15 +19,40 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
+const database = getFirestore();
 
 
 const AppProvider = React.createContext();
 
 export default function GlobalContext({children}) {
  
+    const [user, setUser] = useState({});
+
+    const registerUser = async (email, password) =>{
+        const userc = await createUserWithEmailAndPassword(auth, email, password);
+
+        return userc;
+    };
+
+    const loginUser = async (email, password) => {
+        const userc = await signInWithEmailAndPassword(auth, email, password);
+
+        return userc;
+    }
+
+    const addMeetinng = async (meeting) => {
+        const {name, description, calendarDate, alarm} = meeting;
+        const timeDate = calendarDate.getTime();
+        const alarmDate = alarm.getTime();
+
+        const docRef = await addDoc(collection(database, 'meeting'), {name, description, timeDate, alarmDate});
+
+        return docRef;
+    }
+    
     return (
         <AppProvider.Provider
-            value={{globalStyles}}
+            value={{globalStyles, registerUser, loginUser, addMeetinng}}
         >
             {
                 children

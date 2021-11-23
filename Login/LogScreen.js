@@ -14,7 +14,7 @@ import { useLoginComponentContext } from './LoginComponentProvider';
 
 export default function LogScreen({navigation}) {
 
-    const {globalStyles: {label, input, labelText, button, logRegScreen, buttonText}} = useGlobalContext();
+    const {globalStyles: {label, input, labelText, button, logRegScreen, buttonText}, loginUser} = useGlobalContext();
 
     const {logInData, setLogInData, onLogIn} = useLoginComponentContext();
     
@@ -38,7 +38,7 @@ export default function LogScreen({navigation}) {
                     
                     <Box style={{marginTop: 25}}>
                     
-                        <Button style={button} type="submit" onPress={onLogIn}>
+                        <Button style={button} type="submit" onPress={()=>onLogIn(logInData.login, logInData.password)}>
                             <Text style={buttonText}>
                                  Login
                             </Text>
