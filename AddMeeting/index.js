@@ -5,7 +5,7 @@ import MeetingAlarm from './MeetingAlarm';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MeetingSetup from './MeetingSetup';
 import AddMeetingContext from './AddMeetingContext';
-import { useGlobalContext } from '../GlobalContext/GlobalContext';
+import { useGlobalContext } from '../GlobalContext';
 
 const Stack = createNativeStackNavigator();
 

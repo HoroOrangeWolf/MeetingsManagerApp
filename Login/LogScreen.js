@@ -1,14 +1,18 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {
   Text,
   Box,
   Button,
   Input,
   FormControl,
+  Spinner,
   Stack,
+  Center,
 } from 'native-base';
 
-import { useGlobalContext } from '../GlobalContext/GlobalContext';
+import {Alert} from 'react-native';
+
+import { useGlobalContext } from '../GlobalContext';
 import { useLoginComponentContext } from './LoginComponentProvider';
 
 
@@ -16,11 +20,14 @@ export default function LogScreen({navigation}) {
 
     const {globalStyles: {label, input, labelText, button, logRegScreen, buttonText}, loginUser} = useGlobalContext();
 
-    const {logInData, setLogInData, onLogIn} = useLoginComponentContext();
+    const {logInData, setLogInData, handleLogin} = useLoginComponentContext();
     
+    const [isLogging, setLogging] = useState(false);
+
     return (
-        
-        <Box style={logRegScreen}>
+        isLogging ?  <Center flex={1} px="3">
+            <Spinner accessibilityLabel="Loging..." size="lg"/>
+        </Center>:<Box style={logRegScreen}>
             <FormControl>
                 <Stack space={2}>
                     
@@ -38,7 +45,20 @@ export default function LogScreen({navigation}) {
                     
                     <Box style={{marginTop: 25}}>
                     
-                        <Button style={button} type="submit" onPress={()=>onLogIn(logInData.login, logInData.password)}>
+                        <Button style={button} type="submit" onPress={()=>
+                            {
+                                setLogging(true);
+                                handleLogin(logInData.login, logInData.password)
+                                    .catch(exc=>{
+                                            Alert.alert(
+                                                "Error!",
+                                                "Invalid email or password!",
+                                                [
+                                                { text: "OK" }]);
+                                        setLogging(false);
+                                    });
+                            }
+                            }>
                             <Text style={buttonText}>
                                  Login
                             </Text>
@@ -55,6 +75,8 @@ export default function LogScreen({navigation}) {
                 </Stack>
             </FormControl>
         </Box>
+        
+        
     );
 }
 

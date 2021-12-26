@@ -1,42 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { Button, StyleSheet, View } from 'react-native';
 
-import Login from './Login';
+import React from 'react';
 
 import {
   NativeBaseProvider,
 } from 'native-base';
 
-import GlobalContext from './GlobalContext/GlobalContext';
+import GlobalContext from './GlobalContext';
 import { NavigationContainer } from '@react-navigation/native';
 
-import AddMeeting from './AddMeeting';
-import Scanner from './Scanner';
-import MainScreen from './MainScreen';
+import Main from './Main';
 
 
 
 export default function App() {
+
+  
   return (
 
     <NativeBaseProvider>
       <NavigationContainer>
         <GlobalContext>
-            <MainScreen/>
+            <Main/>
         </GlobalContext>
       </NavigationContainer>
     </NativeBaseProvider>
   
   );
 }
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

@@ -2,7 +2,7 @@
 import { Box } from 'native-base';
 import React from 'react'
 
-import { useGlobalContext } from '../GlobalContext/GlobalContext';
+import { useGlobalContext } from '../GlobalContext';
 import RegisterFirstScreen from './RegisterFirstScreen';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';

@@ -52,7 +52,7 @@ export default function GlobalContext({children}) {
     
     return (
         <AppProvider.Provider
-            value={{globalStyles, registerUser, loginUser, addMeetinng}}
+            value={{globalStyles, registerUser, loginUser, addMeetinng, setUser}}
         >
             {
                 children

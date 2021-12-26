@@ -9,7 +9,7 @@ import LoginComponentProvider from './LoginComponentProvider';
 
 const Stack = createNativeStackNavigator();
 
-import { useGlobalContext } from '../GlobalContext/GlobalContext';
+import { useGlobalContext } from '../GlobalContext';
 
 export default function Login({handleLogin, handleRegister}){
     
@@ -18,26 +18,8 @@ export default function Login({handleLogin, handleRegister}){
 
     const [registerData, setRegisterData] = useState({email: '', password: '', login: ''});
 
-    const {registerUser, loginUser} = useGlobalContext();
-
-    const onLogIn = () =>{
-        loginUser(logInData.login, logInData.password)
-        .then(v=>console.log(v))
-        .catch(v=>console.log(v));
-    };
-
-    const onRegister = () =>{
-        registerUser(registerData.email, registerData.password)
-            .then((c)=>{
-                console.log(c);
-            })
-            .catch(er=>{
-                console.log(er);
-            })
-    };
-
     return (
-        <LoginComponentProvider value={{logInData, registerData,setLogInData, setRegisterData, onLogIn, onRegister}}>
+        <LoginComponentProvider value={{logInData, registerData,setLogInData, setRegisterData, handleLogin, handleRegister}}>
 
              <Stack.Navigator initialRouteName="LogScreen" >
                 <Stack.Screen name="LogScreen" component={LogScreen} options={{headerShown: false}}/>

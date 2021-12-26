@@ -1,6 +1,6 @@
 import { Box, Button, FormControl, HStack, Input, Stack, Text, TextArea } from 'native-base';
 import React, {useState} from 'react'
-import { useGlobalContext } from '../GlobalContext/GlobalContext';
+import { useGlobalContext } from '../GlobalContext';
 import { useAddMeetingContext } from './AddMeetingContext';
 
 export default function MeettingDetails({navigation}) {

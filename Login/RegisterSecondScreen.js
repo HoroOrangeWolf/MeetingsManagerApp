@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { useGlobalContext } from '../GlobalContext/GlobalContext';
+import { useGlobalContext } from '../GlobalContext';
 
 import {
   Text,

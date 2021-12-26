@@ -2,7 +2,7 @@ import RNDateTimePicker from '@react-native-community/datetimepicker';
 import moment from 'moment';
 import { Box, Button, FormControl, HStack, Input, Stack, Text } from 'native-base';
 import React, {useState} from 'react'
-import { useGlobalContext } from '../GlobalContext/GlobalContext';
+import { useGlobalContext } from '../GlobalContext';
 import { useAddMeetingContext } from './AddMeetingContext';
 
 //https://github.com/react-native-datetimepicker/datetimepicker
