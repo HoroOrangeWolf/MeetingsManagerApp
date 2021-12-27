@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, {useState} from 'react'
 import { useGlobalContext } from '../GlobalContext';
 
 import {
@@ -9,16 +9,48 @@ import {
   Input,
   FormControl,
   Stack,
+  Spinner,
+  Center,
 } from 'native-base';
+
+
+import { Alert } from 'react-native';
+
 import { useLoginComponentContext } from './LoginComponentProvider';
 
 export default function RegisterSecondScreen({navigation}) {
 
     const {globalStyles: {input, button, labelText, label ,logRegScreen, buttonText}} = useGlobalContext();
-    const {registerData, setRegisterData, onRegister} = useLoginComponentContext();
+    const {registerData, setRegisterData, handleRegister} = useLoginComponentContext();
+    const [isLoading, setLoading] = useState(false);
+
+    const regFunction = () =>{
+        setLoading(true);
+        handleRegister(registerData.email, registerData.password)
+            .then(()=>{
+                navigation.navigate("LogScreen");
+                Alert.alert(
+                    "Registered successfully!",
+                    "You can login now!",
+                    [
+                    { text: "OK" }
+                ]);
+            })
+            .catch(exc=>{
+                setLoading(false);
+                Alert.alert(
+                    "Error!",
+                    "Invalid email/password",
+                    [
+                    { text: "OK" }
+                ]);
+            });
+    }
 
     return (
-        <Box style={logRegScreen}>
+        isLoading ? <Center flex={1} px="3">
+            <Spinner size="lg" accessibilityLabel="Loading"/>
+        </Center>:<Box style={logRegScreen}>
             <FormControl>
                 <Stack space={2}>
                     <FormControl.Label style={label}>
@@ -34,7 +66,7 @@ export default function RegisterSecondScreen({navigation}) {
                     <Input style={input} type="password"/>
 
                     <Box style={{marginTop: 25}}>
-                        <Button style={button} type="submit" onPress={onRegister}>
+                        <Button style={button} type="submit" onPress={regFunction}>
                             <Text style={buttonText}>
                                 Register
                             </Text>

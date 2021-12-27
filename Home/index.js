@@ -100,9 +100,7 @@ export const Example = () => {
 
 export default () => {
   return (
-    <NativeBaseProvider>
       <Example/>
-    </NativeBaseProvider>
   )
 }
 

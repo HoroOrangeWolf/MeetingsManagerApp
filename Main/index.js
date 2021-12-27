@@ -26,22 +26,12 @@ export default Main = () =>{
     }
 
     const handleRegister = async (email, pass) => {
-        registerUser(email, pass)
-            .then((res)=>{
-                Alert.alert(
-                    "Registered successfully!",
-                    "You can login now!",
-                    [
-                    { text: "OK" }
-                ]);
-            }).catch((exc)=>{
-                Alert.alert(
-                    "Error!",
-                    "Invalid email!",
-                    [
-                    { text: "OK" }
-                ]);
-            });
+
+        try{
+            const unPare = await registerUser(email, pass);
+        }catch(exc){
+            throw exc;
+        }
     }
 
     
