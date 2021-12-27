@@ -10,7 +10,9 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import Main from './Main';
 
+import { LogBox } from 'react-native';
 
+LogBox.ignoreLogs(['Setting a timer']);
 
 export default function App() {
 
