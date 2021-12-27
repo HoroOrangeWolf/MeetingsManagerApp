@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, query, getDocs, where, Query } from "firebase/firestore";
 
 
 const firebaseConfig = {
@@ -45,14 +45,27 @@ export default function GlobalContext({children}) {
         const timeDate = calendarDate.getTime();
         const alarmDate = alarm.getTime();
 
-        const docRef = await addDoc(collection(database, 'meeting'), {name, description, timeDate, alarmDate});
+        const docRef = await addDoc(collection(database, 'meeting'), {name, description, timeDate, alarmDate, userEmail: user.user.email });
 
         return docRef;
+    }
+
+    const getMeetings = async () =>{
+
+        const qu = query(collection(database, 'meeting'), where('userEmail', '==', user.user.email));
+
+        const snapshot = await getDocs(qu);
+        
+        const ar = [];
+
+        snapshot.forEach(doc=>ar.push({id: doc.id,...doc.data()}));
+        
+        return ar;
     }
     
     return (
         <AppProvider.Provider
-            value={{globalStyles, registerUser, loginUser, addMeetinng, setUser}}
+            value={{globalStyles, registerUser, loginUser, addMeetinng, setUser, getMeetings}}
         >
             {
                 children

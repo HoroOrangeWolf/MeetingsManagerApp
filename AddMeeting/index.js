@@ -7,6 +7,8 @@ import MeetingSetup from './MeetingSetup';
 import AddMeetingContext from './AddMeetingContext';
 import { useGlobalContext } from '../GlobalContext';
 
+import { Alert } from 'react-native';
+
 const Stack = createNativeStackNavigator();
 
 export default function AddMeeting({navigation, onMeetingAdd}) {
@@ -19,8 +21,22 @@ export default function AddMeeting({navigation, onMeetingAdd}) {
     const onFinishClick = () => {
         
         addMeetinng(meeting)
-        .then(val => console.log(val))
-        .catch(exc => console.log(exc));
+            .then(val => {
+                navigation.navigate('Home');
+                Alert.alert(
+                            "Sukces!",
+                            "Dodano spotkanie!",
+                            [
+                            { text: "OK" }]);
+            })
+            .catch(exc => {
+                console.log(exc);
+                Alert.alert(
+                            "Błąd!",
+                            "Błąd podczas dodawania spotkania!",
+                            [
+                            { text: "OK" }]);
+            });
     };
 
     return (

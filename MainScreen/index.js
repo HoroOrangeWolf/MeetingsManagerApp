@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Text } from 'native-base';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
@@ -8,10 +8,13 @@ import Help from '../Help/Help';
 import LogOut from '../LogOut/LogOut';
 import Authors from '../Authors';
 import AddMeeting from '../AddMeeting';
+import { useGlobalContext } from '../GlobalContext';
 
 const DrawerNav = createDrawerNavigator();
 
 const MainScreen = () => {
+
+
   return (
     <DrawerNav.Navigator initialRouteName = "Home">
         <DrawerNav.Screen name="Home" component={Home} />
