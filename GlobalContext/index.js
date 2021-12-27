@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
-import { getFirestore, collection, addDoc, query, getDocs, where, Query } from "firebase/firestore";
+import { getFirestore, collection, addDoc,deleteDoc, query, doc,getDocs, where, Query } from "firebase/firestore";
 
 
 const firebaseConfig = {
@@ -62,10 +62,14 @@ export default function GlobalContext({children}) {
         
         return ar;
     }
+
+    const removeMeeting = async (docId) => {
+       await deleteDoc(doc(database, "meeting", docId));
+    }
     
     return (
         <AppProvider.Provider
-            value={{globalStyles, registerUser, loginUser, addMeetinng, setUser, getMeetings}}
+            value={{globalStyles, registerUser, loginUser, addMeetinng, setUser, getMeetings, removeMeeting}}
         >
             {
                 children

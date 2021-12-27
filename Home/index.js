@@ -12,7 +12,7 @@ export default function Home({navigation})  {
   const [meetings, setMeetings] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
-  const {getMeetings} = useGlobalContext();
+  const {getMeetings, removeMeeting} = useGlobalContext();
 
   useEffect(() => {
     setLoading(true);
@@ -21,11 +21,45 @@ export default function Home({navigation})  {
         setMeetings(value);
       })
       .catch(exc=>{
-        console.log(exc);
+        Alert.alert(
+                    "Error!",
+                    "Nie mozna pobrać spotkań.",
+                    [
+                    { text: "OK" }]);
       }).finally(()=>{
         setLoading(false);
       });
   }, []);
+
+  const deleteMeeting = (itemId) =>{
+    setLoading(true);
+    removeMeeting(itemId)
+      .then(()=>{
+        return getMeetings();
+      })
+      .then((v)=>{
+        setMeetings(v);
+      })
+      .catch(exc=>{
+        console.log(exc);
+        Alert.alert(
+                    "Error!",
+                    "Nie można usunąć spotkania.",
+                    [
+                    { text: "OK" }]);
+      })
+      .finally(()=>{
+        setLoading(false);
+      })
+  }
+
+  const longPress = (item) => {
+    Alert.alert(
+                    "Usuwanie Spotkania",
+                    `Czy chcesz usunąć: ${item.name}?`,
+                    [
+                    { text: "Tak", onPress: ()=> deleteMeeting(item.id) }, {text: "Nie"}]);
+  }
   
 
   return (
@@ -44,7 +78,7 @@ export default function Home({navigation})  {
       <FlatList
         data={meetings}
         renderItem={({ item }) => (
-          <Pressable onPress={()=>{console.log("ta")}} onLongPress={()=>console.log("long")}>
+          <Pressable onPress={()=>{console.log("ta")}} onLongPress = {()=>longPress(item)}>
                 <Box
                 borderBottomWidth="4"
                 _dark={{
@@ -56,6 +90,7 @@ export default function Home({navigation})  {
                 py="2"
               >
                 <HStack space={1} justifyContent="space-between">
+
                   <VStack>
                     <Text
                       _dark={{
@@ -66,6 +101,7 @@ export default function Home({navigation})  {
                     >
                       {`Nazwa spotkania: ${item.name}`}
                     </Text>
+
                     <Text
                       color="coolGray.600"
                       _dark={{
@@ -75,6 +111,7 @@ export default function Home({navigation})  {
                       {`Opis: ${item.description}`}
                     </Text>
                   </VStack>
+
                   <Spacer />
                   <Text
                     fontSize="xs"
