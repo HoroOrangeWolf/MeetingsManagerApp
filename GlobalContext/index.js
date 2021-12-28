@@ -122,6 +122,29 @@ const globalStyles = StyleSheet.create({
         textAlign: "center",
     },
 
+    titleText: {
+        fontSize: 30,
+        paddingTop: 10,
+        lineHeight: 50,
+        fontWeight: "700",
+        textAlign: "center",
+    },
+
+    headerText: {
+        fontSize: 24,
+        marginTop: 10,
+        padding: 20,
+        marginLeft: 10,
+        fontWeight: "700",
+        textAlign: "left",
+    },
+
+    paragraphText: {
+        fontSize: 16,
+        marginLeft: 10,
+        textAlign: "left",
+    },
+
     buttonText: {
         fontSize: 22,
         color: "white",
