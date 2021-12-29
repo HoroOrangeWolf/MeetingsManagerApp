@@ -4,7 +4,7 @@ import { Box,FlatList,HStack,VStack,Text,Spacer} from "native-base"
 
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 
-export default function List({data}) {
+export default function List({data, longPress}) {
     return (
         <FlatList
         data={data}
