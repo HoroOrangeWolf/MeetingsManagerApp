@@ -76,7 +76,7 @@ export default function Home({navigation})  {
       <Heading fontSize="xl" p="4" pb="3">
         Zaplanowane spotkania
       </Heading>
-      <List data={meetings}/>
+      <List data={meetings} longPress={longPress}/>
     </Box>
   )
 }
