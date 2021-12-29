@@ -54,7 +54,7 @@ function Help() {
             <Text style={headerText}>
                 Usuwanie spotkania
             </Text>
-            <Text style={paragraphText, {paddingBottom: 30}}>
+            <Text style={paragraphText}>
                 1. Z menu bocznego należy wybrać zakładkę Home
                 {'\n'}
                 2. Na liście szukamy spotkania które chcemy usunąć
