@@ -163,6 +163,11 @@ const globalStyles = StyleSheet.create({
         height: "40%",
         backgroundColor: "#EEEEEE",
         fontSize: 15,
+    },
+    container: {
+        flex: 1,
+        justifyContent: "space-around",
+        alignItems: "center"
     }
 
 }
