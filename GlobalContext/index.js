@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
-import { getFirestore, collection, addDoc,deleteDoc, query, doc,getDocs, where, Query } from "firebase/firestore";
+import { getFirestore, collection, addDoc,deleteDoc, query, doc,getDocs, where, Query, getDoc } from "firebase/firestore";
 
 
 const firebaseConfig = {
@@ -49,7 +49,10 @@ export default function GlobalContext({children}) {
 
         return docRef;
     }
-
+    const getMetting = async (id) => {
+        const buff = await getDoc(doc(database, "meeting", id));
+        return {id: buff.id, ...buff};
+    }
     const getMeetings = async () =>{
 
         const qu = query(collection(database, 'meeting'), where('userEmail', '==', user.user.email));
