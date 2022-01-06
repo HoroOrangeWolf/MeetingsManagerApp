@@ -49,9 +49,9 @@ export default function GlobalContext({children}) {
 
         return docRef;
     }
-    const getMetting = async (id) => {
+    const getMeeting = async (id) => {
         const buff = await getDoc(doc(database, "meeting", id));
-        return {id: buff.id, ...buff};
+        return {id: buff.id, ...buff.data()};
     }
     const getMeetings = async () =>{
 
@@ -72,7 +72,7 @@ export default function GlobalContext({children}) {
     
     return (
         <AppProvider.Provider
-            value={{globalStyles, registerUser, loginUser, addMeetinng, setUser, getMeetings, removeMeeting}}
+            value={{globalStyles, registerUser, loginUser, addMeetinng, setUser, getMeetings, removeMeeting, getMeeting}}
         >
             {
                 children

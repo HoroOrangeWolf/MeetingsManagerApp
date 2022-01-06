@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
-
+import { useGlobalContext } from '../GlobalContext';
 
 export default function Scanner() {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [data, setData] = useState('');
+  const {getMeeting, addMeetinng} = useGlobalContext();
 
   useEffect(() => {
     (async () => {
@@ -18,6 +19,15 @@ export default function Scanner() {
 
   const handleBarCodeScanned = ({ type, data }) => {
     setData(data);
+    getMeeting(data)
+      .then(value => {
+        console.log(value);
+        const {name, userEmail, description, alarmDate, timeDate} = value;
+        addMeetinng({name, userEmail, description, alarmDate, timeDate});
+      })
+      .catch(ex => {
+        console.log(ex);
+      });
     setScanned(true);
   };
 
