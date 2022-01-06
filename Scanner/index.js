@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import { Text, View, StyleSheet, Button, Alert } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { useGlobalContext } from '../GlobalContext';
+import { Box, Spinner} from "native-base"
 
 export default function Scanner() {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [data, setData] = useState('');
   const {getMeeting, addMeetinng} = useGlobalContext();
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -19,15 +21,61 @@ export default function Scanner() {
 
   const handleBarCodeScanned = ({ type, data }) => {
     setData(data);
-    getMeeting(data)
-      .then(value => {
-        console.log(value);
-        const {name, userEmail, description, alarmDate, timeDate} = value;
-        addMeetinng({name, userEmail, description, alarm: new Date(alarmDate),calendarDate: new Date(timeDate)});
-      })
-      .catch(ex => {
-        console.log(ex);
-      });
+    Alert.alert(
+      "Czy chcesz dolaczyc do spotkania?",
+      "",
+      [
+        {
+          text: "Tak",
+          onPress: () => {
+            setLoading(true);
+            getMeeting(data)
+              .then(value => {
+                const {name, userEmail, description, alarmDate, timeDate} = value;
+                addMeetinng({name, userEmail, description, alarm: new Date(alarmDate),calendarDate: new Date(timeDate)})
+                  .then(()=>{
+                    Alert.alert(
+                      "Udalo sie dolaczyc do spotkania!",
+                      "",
+                      [
+                        {
+                          text: "OK",
+                        }
+                      ]
+                    )
+                  })
+                  .catch(exc => {
+                    setLoading(false);
+                    Alert.alert(
+                      "Nie udalo sie dolaczyc do spotkania!",
+                      "Sprobuj ponownie!",
+                      [
+                        {
+                          text: "OK",
+                        }
+                      ]
+                    )
+                  })
+              })
+              .catch(exc => {
+                setLoading(false);
+                Alert.alert(
+                  "Nie udalo sie dolaczyc do spotkania!",
+                  "Sprobuj ponownie!",
+                  [
+                    {
+                      text: "OK",
+                    }
+                  ]
+                )
+              });
+          }
+        },
+        {
+          text: "Nie"
+        }
+      ]
+    );
     setScanned(true);
   };
 
@@ -40,7 +88,9 @@ export default function Scanner() {
 
 
 return (
-    <View style={styles.container}>
+    isLoading ? <Center flex={1} px="3">
+      <Spinner accessibilityLabel="Loading..." size="lg"/>
+    </Center>:<View style={styles.container}>
       <View style={styles.barcodebox}>
         <BarCodeScanner
           onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
