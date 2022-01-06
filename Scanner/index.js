@@ -23,7 +23,7 @@ export default function Scanner() {
       .then(value => {
         console.log(value);
         const {name, userEmail, description, alarmDate, timeDate} = value;
-        addMeetinng({name, userEmail, description, alarmDate, timeDate});
+        addMeetinng({name, userEmail, description, alarm: new Date(alarmDate),calendarDate: new Date(timeDate)});
       })
       .catch(ex => {
         console.log(ex);
