@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from "react"
 
 import { Box,FlatList,Heading,Avatar,HStack,VStack,Text,Spacer,Center,NativeBaseProvider, Spinner} from "native-base"
-
-import { Alert } from "react-native";
+import { Alert,SafeAreaView, ScrollView } from "react-native";
 import { useGlobalContext } from "../GlobalContext";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import List from "./List";
@@ -73,11 +72,9 @@ export default function Home({navigation})  {
         md: "25%",
       }}
     >
-      <Heading fontSize="xl" p="4" pb="3">
-        Zaplanowane spotkania
-      </Heading>
       <List data={meetings} longPress={longPress}/>
     </Box>
+    
   )
 }
 
