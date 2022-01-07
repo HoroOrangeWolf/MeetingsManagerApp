@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, Button, Alert } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { useGlobalContext } from '../GlobalContext';
-import { Box, Spinner} from "native-base"
+import { Box, Spinner, Center} from "native-base"
 
 export default function Scanner() {
   const [hasPermission, setHasPermission] = useState(null);
@@ -34,6 +34,7 @@ export default function Scanner() {
                 const {name, userEmail, description, alarmDate, timeDate} = value;
                 addMeetinng({name, userEmail, description, alarm: new Date(alarmDate),calendarDate: new Date(timeDate)})
                   .then(()=>{
+                    setLoading(false);
                     Alert.alert(
                       "Udalo sie dolaczyc do spotkania!",
                       "",
