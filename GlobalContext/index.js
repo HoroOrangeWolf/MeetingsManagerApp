@@ -60,9 +60,9 @@ export default function GlobalContext({children}) {
         const snapshot = await getDocs(qu);
         
         const ar = [];
-
-        snapshot.forEach(doc=>ar.push({id: doc.id,...doc.data()}));
         
+        snapshot.forEach(doc=>ar.push({id: doc.id,...doc.data()}));
+        ar.sort((first, sec) => first.timeDate - sec.timeDate);
         return ar;
     }
 
