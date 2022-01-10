@@ -28,6 +28,12 @@ export default function GlobalContext({children}) {
  
     const [user, setUser] = useState({});
 
+    const [trigger, setTrigger] = useState(false);
+
+    const triggerLoadData = () =>{
+        setTrigger(!trigger);
+    };
+
     const registerUser = async (email, password) =>{
         const userc = await createUserWithEmailAndPassword(auth, email, password);
 
@@ -72,7 +78,7 @@ export default function GlobalContext({children}) {
     
     return (
         <AppProvider.Provider
-            value={{globalStyles, registerUser, loginUser, addMeetinng, setUser, getMeetings, removeMeeting, getMeeting}}
+            value={{globalStyles, registerUser, loginUser, addMeetinng, setUser, getMeetings, removeMeeting, getMeeting, triggerLoadData, trigger}}
         >
             {
                 children

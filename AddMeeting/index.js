@@ -13,7 +13,7 @@ const Stack = createNativeStackNavigator();
 
 export default function AddMeeting({navigation, onMeetingAdd}) {
 
-    const {addMeetinng} = useGlobalContext();
+    const {addMeetinng, triggerLoadData} = useGlobalContext();
 
 
     const [meeting, setMeeting] = useState({name: '', description: '', calendarDate: new Date(), alarm: new Date(1)});
@@ -28,6 +28,7 @@ export default function AddMeeting({navigation, onMeetingAdd}) {
                             "Dodano spotkanie!",
                             [
                             { text: "OK" }]);
+                triggerLoadData();
             })
             .catch(exc => {
                 console.log(exc);

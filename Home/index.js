@@ -12,7 +12,7 @@ export default function Home({navigation})  {
   const [meetings, setMeetings] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
-  const {getMeetings, removeMeeting} = useGlobalContext();
+  const {getMeetings, removeMeeting, trigger, triggerLoadData} = useGlobalContext();
 
   useEffect(() => {
     setLoading(true);
@@ -29,28 +29,14 @@ export default function Home({navigation})  {
       }).finally(()=>{
         setLoading(false);
       });
-  }, []);
+  }, [trigger]);
 
   const deleteMeeting = (itemId) =>{
     setLoading(true);
     removeMeeting(itemId)
       .then(()=>{
-        return getMeetings();
-      })
-      .then((v)=>{
-        setMeetings(v);
-      })
-      .catch(exc=>{
-        console.log(exc);
-        Alert.alert(
-                    "Error!",
-                    "Nie można usunąć spotkania.",
-                    [
-                    { text: "OK" }]);
-      })
-      .finally(()=>{
-        setLoading(false);
-      })
+        triggerLoadData();
+      });
   }
 
   const longPress = (item) => {
