@@ -9,7 +9,7 @@ import FontIcon from 'react-native-vector-icons/FontAwesome5'
 import List from "./List";
 
 import Scanner from '../Scanner';
-import Help from '../Help/Help';
+import HomeTab from "./HomeTab";
 
 const TabNav = createBottomTabNavigator();
 
@@ -22,17 +22,17 @@ export default function Home({navigation})  {
 
       tabBarIcon: ({ focused }) => {
         switch (route.name) {
-          case 'Help':
+          case 'Home':
             return (
               <FontIcon
-                name="Help"
+                name="home"
                 size={20}
                 solid />
             );
           case 'Scanner':
             return (
               <FontIcon
-                name="user"
+                name="camera"
                 size={20}
                 solid />
             );
@@ -49,12 +49,13 @@ export default function Home({navigation})  {
         // paddingBottom: 5,
         // paddingTop: 5,
       },
+
     }}
-    initialRouteName="Help"
+    initialRouteName="Home"
     swipeEnabled={false}
     >
-      <TabNav.Screen name="Help" component={Help} />
-      <TabNav.Screen name="Scanner" component={Scanner} />
+      <TabNav.Screen name="Home" component={HomeTab} options={{headerShown: false}}/>
+      <TabNav.Screen name="Scanner" component={Scanner} options={{headerShown: false}}/>
     </TabNav.Navigator>
     
   )
