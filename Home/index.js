@@ -4,62 +4,58 @@ import { Box,FlatList,Heading,Avatar,HStack,VStack,Text,Spacer,Center,NativeBase
 import { Alert,SafeAreaView, ScrollView } from "react-native";
 import { useGlobalContext } from "../GlobalContext";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import FontIcon from 'react-native-vector-icons/FontAwesome5'
 import List from "./List";
+
+import Scanner from '../Scanner';
+import Help from '../Help/Help';
+
+const TabNav = createBottomTabNavigator();
 
 export default function Home({navigation})  {
 
-
-  const [meetings, setMeetings] = useState([]);
-  const [isLoading, setLoading] = useState(true);
-
-  const {getMeetings, removeMeeting, trigger, triggerLoadData} = useGlobalContext();
-
-  useEffect(() => {
-    setLoading(true);
-    getMeetings()
-      .then(value => {
-        setMeetings(value);
-      })
-      .catch(exc=>{
-        Alert.alert(
-                    "Error!",
-                    "Nie mozna pobrać spotkań.",
-                    [
-                    { text: "OK" }]);
-      }).finally(()=>{
-        setLoading(false);
-      });
-  }, [trigger]);
-
-  const deleteMeeting = (itemId) =>{
-    setLoading(true);
-    removeMeeting(itemId)
-      .then(()=>{
-        triggerLoadData();
-      });
-  }
-
-  const longPress = (item) => {
-    Alert.alert(
-                    "Usuwanie Spotkania",
-                    `Czy chcesz usunąć: ${item.name}?`,
-                    [
-                    { text: "Tak", onPress: ()=> deleteMeeting(item.id) }, {text: "Nie"}]);
-  }
-  
-
   return (
 
-    isLoading ? <Center flex={1} px="3">
-      <Spinner accessibilityLabel="Loading..." size="lg"/>
-    </Center>:<Box
-      w={{
-        base: "100%",
-        md: "25%",
-      }}
+    <TabNav.Navigator
+    screenOptions={({ route }) => ({
+
+      tabBarIcon: ({ focused }) => {
+        switch (route.name) {
+          case 'Help':
+            return (
+              <FontIcon
+                name="Help"
+                size={20}
+                solid />
+            );
+          case 'Scanner':
+            return (
+              <FontIcon
+                name="user"
+                size={20}
+                solid />
+            );
+          default:
+            return <View />;
+        }
+      },
+    })}
+    tabBarOptions={{
+      style: {
+        // backgroundColor: 'white',
+        // borderTopColor: 'gray',
+        // borderTopWidth: 1,
+        // paddingBottom: 5,
+        // paddingTop: 5,
+      },
+    }}
+    initialRouteName="Help"
+    swipeEnabled={false}
     >
-      <List data={meetings} longPress={longPress}/>
-    </Box>
+      <TabNav.Screen name="Help" component={Help} />
+      <TabNav.Screen name="Scanner" component={Scanner} />
+    </TabNav.Navigator>
     
   )
 }

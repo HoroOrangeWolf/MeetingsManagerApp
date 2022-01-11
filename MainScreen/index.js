@@ -12,18 +12,22 @@ import { useGlobalContext } from '../GlobalContext';
 
 const DrawerNav = createDrawerNavigator();
 
+
+
 const MainScreen = () => {
 
 
   return (
-    <DrawerNav.Navigator initialRouteName = "Home">
+    
+      <DrawerNav.Navigator initialRouteName="Home">
         <DrawerNav.Screen name="Home" component={Home} />
-        <DrawerNav.Screen name="Dodaj Spotkanie" component={AddMeeting}/>
+        <DrawerNav.Screen name="Dodaj Spotkanie" component={AddMeeting} />
         <DrawerNav.Screen name="Zeskanuj kod QR" component={Scanner} />
         <DrawerNav.Screen name="Pomoc" component={Help} />
         <DrawerNav.Screen name="Autorzy" component={Authors} />
         <DrawerNav.Screen name="Wyloguj" component={LogOut} />
-    </DrawerNav.Navigator>
+      </DrawerNav.Navigator>
+    
   )
 }
 
