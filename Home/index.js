@@ -1,15 +1,12 @@
 import React, {useState, useEffect} from "react"
 
-import { Box,FlatList,Heading,Avatar,HStack,VStack,Text,Spacer,Center,NativeBaseProvider, Spinner} from "native-base"
-import { Alert,SafeAreaView, ScrollView } from "react-native";
-import { useGlobalContext } from "../GlobalContext";
-import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import FontIcon from 'react-native-vector-icons/FontAwesome5'
 import List from "./List";
 
 import Scanner from '../Scanner';
 import HomeTab from "./HomeTab";
+import CalendarTab from "../Calendar/CalendarTab";
 
 const TabNav = createBottomTabNavigator();
 
@@ -29,6 +26,13 @@ export default function Home({navigation})  {
                 size={20}
                 solid />
             );
+          case 'Calendar':
+          return (
+            <FontIcon
+              name="calendar"
+              size={20}
+              solid />
+          );
           case 'Scanner':
             return (
               <FontIcon
@@ -55,6 +59,7 @@ export default function Home({navigation})  {
     swipeEnabled={false}
     >
       <TabNav.Screen name="Home" component={HomeTab} options={{headerShown: false}}/>
+      <TabNav.Screen name="Calendar" component={CalendarTab} options={{headerShown: false}}/>
       <TabNav.Screen name="Scanner" component={Scanner} options={{headerShown: false}}/>
     </TabNav.Navigator>
     
