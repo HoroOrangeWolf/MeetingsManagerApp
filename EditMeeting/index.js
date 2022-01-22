@@ -7,7 +7,7 @@ import { Alert } from 'react-native';
 
 const Stack = createNativeStackNavigator();
 
-export default function AddMeeting({navigation, onMeetingAdd}) {
+export default function EditMeeting({navigation}) {
 
     const {addMeetinng, triggerLoadData} = useGlobalContext();
 
@@ -19,8 +19,6 @@ export default function AddMeeting({navigation, onMeetingAdd}) {
         
         
     };
-
-
 
     return (
         <AddMeetingContext value={{meeting, setMeeting, onFinishClick}}>
