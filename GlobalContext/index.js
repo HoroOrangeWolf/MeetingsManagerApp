@@ -72,6 +72,10 @@ export default function GlobalContext({children}) {
         return ar;
     }
 
+    const updateMeeting = async (meeting) => {
+        await updateDoc(doc(database, "meeting", meeting));
+     } 
+
     const removeMeeting = async (docId) => {
        await deleteDoc(doc(database, "meeting", docId));
     }
