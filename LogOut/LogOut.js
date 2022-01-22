@@ -1,11 +1,10 @@
 import React from 'react';
 import { Text } from 'native-base';
+import { Spinner } from 'native-base';
 
 function LogOut() {
     return (
-      <Text>
-          LogOut drawer
-      </Text>
+      <Spinner accessibilityLabel="Loading posts" />
     );
 }
 

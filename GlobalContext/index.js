@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { getFirestore, collection, addDoc,deleteDoc, query, doc,getDocs, where, Query, getDoc } from "firebase/firestore";
 
 
@@ -27,6 +27,8 @@ const AppProvider = React.createContext();
 export default function GlobalContext({children}) {
  
     const [user, setUser] = useState({});
+    
+    const [isLogged, setLogged] = useState(false);
 
     const [trigger, setTrigger] = useState(false);
 
@@ -43,7 +45,13 @@ export default function GlobalContext({children}) {
     const loginUser = async (email, password) => {
         const userc = await signInWithEmailAndPassword(auth, email, password);
 
-        return userc;
+        setUser(userc);
+        setLogged(true);
+    }
+
+    const logOut = async () => {
+        await signOut(auth);
+        setLogged(false);
     }
 
     const addMeetinng = async (meeting) => {
@@ -82,7 +90,7 @@ export default function GlobalContext({children}) {
     
     return (
         <AppProvider.Provider
-            value={{globalStyles, registerUser, loginUser, addMeetinng, setUser, getMeetings, removeMeeting, getMeeting, triggerLoadData, trigger}}
+            value={{globalStyles, registerUser, loginUser, addMeetinng, setUser, getMeetings, removeMeeting, getMeeting, isLogged, triggerLoadData, trigger}}
         >
             {
                 children
