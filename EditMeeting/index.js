@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useGlobalContext } from '../GlobalContext';
-
+import MeetingEditor from './MeetingEditor';
 import { Alert } from 'react-native';
+import QRCodeGenerator from './QRCodeGenerator';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,11 +22,11 @@ export default function EditMeeting({navigation}) {
     };
 
     return (
-        <AddMeetingContext value={{meeting, setMeeting, onFinishClick}}>
-            <Stack.Navigator initialRouteName="MeetingDetails" >
-                <Stack.Screen name="MeetingDetails" component={MeettingDetails} options={{headerShown: false}}/>
-                <Stack.Screen name="MeetingSetup" component={MeetingSetup} options={{headerShown: false}}/>
+        
+            <Stack.Navigator initialRouteName="MeetingEditor" >
+                <Stack.Screen name="MeetingEditor" component={MeetingEditor} options={{headerShown: false}}/>
+                <Stack.Screen name="QRCodeGenerator" component={QRCodeGenerator} options={{headerShown: false}}/>
             </Stack.Navigator>
-        </AddMeetingContext>
+      
     );
 }
