@@ -14,7 +14,7 @@ import { useGlobalContext } from '../GlobalContext';
 export default function Login({handleLogin, handleRegister}){
     
     
-    const [logInData, setLogInData] = useState({login: '', password: ''});
+    const [logInData, setLogInData] = useState({login: '', password: '', confirmPassword: ''});
 
     const [registerData, setRegisterData] = useState({email: '', password: '', login: ''});
 

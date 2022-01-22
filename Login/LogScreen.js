@@ -8,12 +8,15 @@ import {
   Spinner,
   Stack,
   Center,
+  Icon,
 } from 'native-base';
 
 import {Alert} from 'react-native';
 
 import { useGlobalContext } from '../GlobalContext';
 import { useLoginComponentContext } from './LoginComponentProvider';
+
+import { MaterialIcons } from "@expo/vector-icons";
 
 
 export default function LogScreen({navigation}) {
@@ -35,13 +38,13 @@ export default function LogScreen({navigation}) {
                         <Text style={labelText}>Login</Text>
                     </FormControl.Label>
                     
-                    <Input style={input} onChangeText={(value)=>setLogInData({...logInData, login: value})} type="text"/>
+                    <Input style={input} onChangeText={(value)=>setLogInData({...logInData, login: value})} type="text" InputLeftElement={<Icon as={<MaterialIcons name="email"/>}/>}/>
                     
                     <FormControl.Label style={label}>
                         <Text style={labelText}>Password</Text>
                     </FormControl.Label>
 
-                    <Input style={input} onChangeText={(value)=>setLogInData({...logInData, password: value})} type="password"/>
+                    <Input style={input} onChangeText={(value)=>setLogInData({...logInData, password: value})} type="password" InputLeftElement={<Icon as={<MaterialIcons name="lock"/>}/>}/>
                     
                     <Box style={{marginTop: 25}}>
                     

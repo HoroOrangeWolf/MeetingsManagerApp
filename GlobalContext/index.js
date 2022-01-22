@@ -5,6 +5,7 @@ import { StyleSheet } from 'react-native';
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { getFirestore, collection, addDoc,deleteDoc, query, doc,getDocs, where, Query, getDoc, updateDoc } from "firebase/firestore";
+import { Dimensions } from 'react-native';
 
 
 const firebaseConfig = {
@@ -31,6 +32,8 @@ export default function GlobalContext({children}) {
     const [isLogged, setLogged] = useState(false);
 
     const [trigger, setTrigger] = useState(false);
+
+    const [meetingBuff, setMeetingBuff] = useState([]);
 
     const triggerLoadData = () =>{
         setTrigger(!trigger);
@@ -93,7 +96,7 @@ export default function GlobalContext({children}) {
     
     return (
         <AppProvider.Provider
-            value={{globalStyles, registerUser, loginUser, addMeetinng, setUser, getMeetings, removeMeeting, getMeeting, updateMeeting,isLogged, logOut, triggerLoadData, trigger}}
+            value={{globalStyles, registerUser, loginUser, addMeetinng, setUser, getMeetings, removeMeeting, getMeeting, meetingBuff, setMeetingBuff,updateMeeting,isLogged, logOut, triggerLoadData, trigger}}
         >
             {
                 children
@@ -130,7 +133,7 @@ const globalStyles = StyleSheet.create({
         backgroundColor: "#EEEEEE",
         borderRadius: 10,
         fontSize: 22,
-        height: 50,
+        height: 50
     },
 
     button: {  
@@ -140,7 +143,7 @@ const globalStyles = StyleSheet.create({
     },
 
     fatText: {
-        fontSize: 50,
+        fontSize: 0.10*Dimensions.get('window').width,
         paddingTop: 40,
         fontWeight: "700",
         textAlign: "center",

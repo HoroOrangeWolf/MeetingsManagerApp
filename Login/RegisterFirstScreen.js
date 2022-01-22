@@ -12,6 +12,7 @@ import {
 } from 'native-base';
 import { useLoginComponentContext } from './LoginComponentProvider';
 
+import { MaterialIcons } from "@expo/vector-icons";
 
 export default function RegisterFirstScreen({navigation}) {
 
@@ -24,17 +25,12 @@ export default function RegisterFirstScreen({navigation}) {
 
             <FormControl>
                 <Stack space={2}>
-                    <FormControl.Label style={label}>
-                        <Text style={labelText}>Login</Text>
-                    </FormControl.Label>
-                    
-                    <Input style={input} onChangeText={(value)=>setRegisterData({...registerData, login: value})} type="text"/>
 
                     <FormControl.Label style={label}>
                         <Text style={labelText}>Email</Text>
                     </FormControl.Label>
 
-                    <Input style={input} onChangeText={(value)=>setRegisterData({...registerData, email: value})} />
+                    <Input style={input} onChangeText={(value)=>setRegisterData({...registerData, email: value})} InputLeftElement={<Icon as={<MaterialIcons name="email"/>}/>}/>
 
                     <Box style={{marginTop: 25}}>
                     

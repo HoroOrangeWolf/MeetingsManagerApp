@@ -18,15 +18,17 @@ export default function HomeTab({navigation})  {
   const [itemToModify, setItemModify] = useState({});
   
 
-  const {getMeetings, removeMeeting, trigger, triggerLoadData, updateMeeting} = useGlobalContext();
+  const {getMeetings, removeMeeting, trigger, triggerLoadData, updateMeeting, setMeetingBuff} = useGlobalContext();
 
   useEffect(() => {
     setLoading(true);
     getMeetings()
       .then(value => {
         setMeetings(value);
+        setMeetingBuff(value);
       })
       .catch(exc=>{
+        console.log(exc);
         Alert.alert(
                     "Error!",
                     "Nie mozna pobrać spotkań.",

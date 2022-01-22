@@ -25,26 +25,36 @@ export default function RegisterSecondScreen({navigation}) {
     const [isLoading, setLoading] = useState(false);
 
     const regFunction = () =>{
-        setLoading(true);
-        handleRegister(registerData.email, registerData.password)
-            .then(()=>{
-                navigation.navigate("LogScreen");
-                Alert.alert(
-                    "Registered successfully!",
-                    "You can login now!",
-                    [
-                    { text: "OK" }
-                ]);
-            })
-            .catch(exc=>{
-                setLoading(false);
-                Alert.alert(
-                    "Error!",
-                    "Invalid email/password",
-                    [
-                    { text: "OK" }
-                ]);
-            });
+        if(registerData.password.trim() === registerData.confirmPassword.trim()){
+             setLoading(true);
+            handleRegister(registerData.email, registerData.password)
+                .then(()=>{
+                    navigation.navigate("LogScreen");
+                    Alert.alert(
+                        "Registered successfully!",
+                        "You can login now!",
+                        [
+                        { text: "OK" }
+                    ]);
+                })
+                .catch(exc=>{
+                    setLoading(false);
+                    Alert.alert(
+                        "Error!",
+                        "Invalid email/password",
+                        [
+                        { text: "OK" }
+                    ]);
+                });
+        }else{
+            Alert.alert(
+                        "Error!",
+                        "Passwords needs to be equal!",
+                        [
+                        { text: "OK" }
+                    ]);
+        }
+       
     }
 
     return (
@@ -57,13 +67,13 @@ export default function RegisterSecondScreen({navigation}) {
                         <Text style={labelText}>Password</Text>
                     </FormControl.Label>
                     
-                    <Input style={input} onChangeText={(value)=>setRegisterData({...registerData, password: value})} type="password"/>
+                    <Input style={input} onChangeText={(value)=>setRegisterData({...registerData, password: value})} type="password" InputLeftElement={<Icon as={<MaterialIcons name="email"/>}/>}/>
 
                     <FormControl.Label style={label}>
                         <Text style={labelText}>ConfirmPassword</Text>
                     </FormControl.Label>
                     
-                    <Input style={input} type="password"/>
+                    <Input style={input} type="password" onChangeText={(value)=>setRegisterData({...registerData, confirmPassword: value})} InputLeftElement={<Icon as={<MaterialIcons name="password"/>}/>}/>
 
                     <Box style={{marginTop: 25}}>
                         <Button style={button} type="submit" onPress={regFunction}>

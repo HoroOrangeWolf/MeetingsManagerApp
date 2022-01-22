@@ -93,10 +93,11 @@ return (
       <Spinner accessibilityLabel="Loading..." size="lg"/>
     </Center>:<View style={styles.container}>
       <View style={styles.barcodebox}>
-        <BarCodeScanner
+        {(hasPermission && !scanned) && <BarCodeScanner
           onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
           barCodeTypes={[BarCodeScanner.Constants.BarCodeType.qr]}
-          style={{ height: 400, width: 400 }} />
+          style={{ height: 400, width: 400 }} />}
+        
       </View>
       <Text style={styles.maintext}>{data}</Text>
 

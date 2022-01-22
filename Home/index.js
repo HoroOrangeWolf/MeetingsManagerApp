@@ -19,7 +19,7 @@ export default function Home({navigation})  {
 
       tabBarIcon: ({ focused }) => {
         switch (route.name) {
-          case 'Home':
+          case 'Home1':
             return (
               <FontIcon
                 name="home"
@@ -45,20 +45,11 @@ export default function Home({navigation})  {
         }
       },
     })}
-    tabBarOptions={{
-      style: {
-        // backgroundColor: 'white',
-        // borderTopColor: 'gray',
-        // borderTopWidth: 1,
-        // paddingBottom: 5,
-        // paddingTop: 5,
-      },
-
-    }}
-    initialRouteName="Home"
+ 
+    initialRouteName="Home1"
     swipeEnabled={false}
     >
-      <TabNav.Screen name="Home" component={HomeTab} options={{headerShown: false}}/>
+      <TabNav.Screen name="Home1" component={HomeTab} options={{headerShown: false}}/>
       <TabNav.Screen name="Calendar" component={CalendarTab} options={{headerShown: false}}/>
       <TabNav.Screen name="Scanner" component={Scanner} options={{headerShown: false}}/>
     </TabNav.Navigator>
