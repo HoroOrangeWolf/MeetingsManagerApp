@@ -51,6 +51,7 @@ export default function GlobalContext({children}) {
 
     const logOut = async () => {
         await signOut(auth);
+        setUser({});
         setLogged(false);
     }
 
@@ -90,7 +91,7 @@ export default function GlobalContext({children}) {
     
     return (
         <AppProvider.Provider
-            value={{globalStyles, registerUser, loginUser, addMeetinng, setUser, getMeetings, removeMeeting, getMeeting, isLogged, triggerLoadData, trigger}}
+            value={{globalStyles, registerUser, loginUser, addMeetinng, setUser, getMeetings, removeMeeting, getMeeting, isLogged, logOut, triggerLoadData, trigger}}
         >
             {
                 children
