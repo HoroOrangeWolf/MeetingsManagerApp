@@ -4,7 +4,7 @@ import { Box,FlatList,HStack,VStack,Text,Spacer, Heading} from "native-base"
 
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 
-export default function List({data, longPress}) {
+export default function List({data, longPress, onPress}) {
   const getHeder = () => {
     return <Heading fontSize="xl" p="4" pb="3">
               Zaplanowane spotkania
@@ -15,7 +15,7 @@ export default function List({data, longPress}) {
         data={data}
         ListHeaderComponent={getHeder}
         renderItem={({ item }) => (
-          <Pressable onPress={()=>{console.log("ta")}} onLongPress = {()=>longPress(item)}>
+          <Pressable onPress={()=>onPress(item)} onLongPress = {()=>longPress(item)}>
                 <Box
                 borderBottomWidth="4"
                 _dark={{

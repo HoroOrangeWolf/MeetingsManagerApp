@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { getFirestore, collection, addDoc,deleteDoc, query, doc,getDocs, where, Query, getDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc,deleteDoc, query, doc,getDocs, where, Query, getDoc, updateDoc } from "firebase/firestore";
 
 
 const firebaseConfig = {
@@ -82,7 +82,9 @@ export default function GlobalContext({children}) {
     }
 
     const updateMeeting = async (meeting) => {
-        await updateDoc(doc(database, "meeting", meeting));
+        const {id, name, description, timeDate, alarmDate} = meeting;
+
+        await updateDoc(doc(database, "meeting", id), {...meeting, timeDate: timeDate.getTime(), alarmDate: alarmDate.getTime()});
      } 
 
     const removeMeeting = async (docId) => {
@@ -91,7 +93,7 @@ export default function GlobalContext({children}) {
     
     return (
         <AppProvider.Provider
-            value={{globalStyles, registerUser, loginUser, addMeetinng, setUser, getMeetings, removeMeeting, getMeeting, isLogged, logOut, triggerLoadData, trigger}}
+            value={{globalStyles, registerUser, loginUser, addMeetinng, setUser, getMeetings, removeMeeting, getMeeting, updateMeeting,isLogged, logOut, triggerLoadData, trigger}}
         >
             {
                 children

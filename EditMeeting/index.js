@@ -8,23 +8,16 @@ import QRCodeGenerator from './QRCodeGenerator';
 
 const Stack = createNativeStackNavigator();
 
-export default function EditMeeting({navigation}) {
+export default function EditMeeting({onMeetingMody, singleMeeting, onBack}) {
 
     const {addMeetinng, triggerLoadData} = useGlobalContext();
 
     const [isModified, setModified] = useState(false);
 
-    const [meeting, setMeeting] = useState({name: '', description: '', calendarDate: new Date(), alarm: new Date(1)});
-
-    const onFinishClick = () => {
-        
-        
-    };
-
     return (
         
             <Stack.Navigator initialRouteName="MeetingEditor" >
-                <Stack.Screen name="MeetingEditor" component={MeetingEditor} options={{headerShown: false}}/>
+                <Stack.Screen name="MeetingEditor" component={MeetingEditor} options={{headerShown: false}} initialParams={{singleMeeting, onMeetingMody, onBack}}/>
                 <Stack.Screen name="QRCodeGenerator" component={QRCodeGenerator} options={{headerShown: false}}/>
             </Stack.Navigator>
       
