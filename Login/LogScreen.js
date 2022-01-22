@@ -35,16 +35,16 @@ export default function LogScreen({navigation}) {
                 <Stack space={2}>
                     
                     <FormControl.Label style={label}>
-                        <Text style={labelText}>Login</Text>
+                        <Text style={labelText}>Email</Text>
                     </FormControl.Label>
                     
-                    <Input style={input} onChangeText={(value)=>setLogInData({...logInData, login: value})} type="text" InputLeftElement={<Icon as={<MaterialIcons name="email"/>}/>}/>
+                        <Input style={input} onChangeText={(value)=>setLogInData({...logInData, login: value})} type="text" InputLeftElement={<Icon style={{color: "gray"}} as={<MaterialIcons name="email"/>}/>}/>
                     
                     <FormControl.Label style={label}>
                         <Text style={labelText}>Password</Text>
                     </FormControl.Label>
 
-                    <Input style={input} onChangeText={(value)=>setLogInData({...logInData, password: value})} type="password" InputLeftElement={<Icon as={<MaterialIcons name="lock"/>}/>}/>
+                    <Input style={input} onChangeText={(value)=>setLogInData({...logInData, password: value})} type="password" InputLeftElement={<Icon style={{color: "gray"}} as={<MaterialIcons name="lock"/>}/>}/>
                     
                     <Box style={{marginTop: 25}}>
                     

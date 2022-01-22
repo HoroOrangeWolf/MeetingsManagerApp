@@ -67,13 +67,13 @@ export default function RegisterSecondScreen({navigation}) {
                         <Text style={labelText}>Password</Text>
                     </FormControl.Label>
                     
-                    <Input style={input} onChangeText={(value)=>setRegisterData({...registerData, password: value})} type="password" InputLeftElement={<Icon as={<MaterialIcons name="email"/>}/>}/>
+                    <Input style={input} onChangeText={(value)=>setRegisterData({...registerData, password: value})} type="password" InputLeftElement={<Icon style={{color: "gray"}} as={<MaterialIcons name="email"/>}/>}/>
 
                     <FormControl.Label style={label}>
                         <Text style={labelText}>ConfirmPassword</Text>
                     </FormControl.Label>
                     
-                    <Input style={input} type="password" onChangeText={(value)=>setRegisterData({...registerData, confirmPassword: value})} InputLeftElement={<Icon as={<MaterialIcons name="password"/>}/>}/>
+                    <Input style={input} type="password" onChangeText={(value)=>setRegisterData({...registerData, confirmPassword: value})} InputLeftElement={<Icon style={{color: "gray"}} as={<MaterialIcons name="password"/>}/>}/>
 
                     <Box style={{marginTop: 25}}>
                         <Button style={button} type="submit" onPress={regFunction}>

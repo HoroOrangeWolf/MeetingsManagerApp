@@ -30,7 +30,7 @@ export default function RegisterFirstScreen({navigation}) {
                         <Text style={labelText}>Email</Text>
                     </FormControl.Label>
 
-                    <Input style={input} onChangeText={(value)=>setRegisterData({...registerData, email: value})} InputLeftElement={<Icon as={<MaterialIcons name="email"/>}/>}/>
+                    <Input style={input} onChangeText={(value)=>setRegisterData({...registerData, email: value})} InputLeftElement={<Icon style={{color: "gray"}} as={<MaterialIcons name="email"/>}/>}/>
 
                     <Box style={{marginTop: 25}}>
                     
