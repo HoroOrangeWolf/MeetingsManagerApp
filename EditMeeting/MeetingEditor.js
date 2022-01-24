@@ -107,7 +107,7 @@ export default function MeetingEditor({navigation, route}) {
 
                                 {isAlarmPicker && <RNDateTimePicker value={meeting.alarmDate} mode="time" onChange={onAlarmPick}/>}
 
-                                <Button style={button} onPress={()=>navigation.navigate('QRCodeGenerator')}>
+                                <Button style={button} onPress={()=>navigation.navigate('QRCodeGenerator', {value: meeting.id} )}>
                                     <Text style={buttonText}>Generate QR Code</Text>
                                 </Button>
                                 {isModified && <Button style={button} onPress={()=>onMeetingMody(meeting)}>

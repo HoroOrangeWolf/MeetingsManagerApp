@@ -8,8 +8,9 @@ export default function Scanner() {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [data, setData] = useState('');
-  const {getMeeting, addMeetinng} = useGlobalContext();
+  const {getMeeting, addMeetinng, triggerLoadData} = useGlobalContext();
   const [isLoading, setLoading] = useState(false);
+  
 
   useEffect(() => {
     (async () => {
@@ -35,6 +36,7 @@ export default function Scanner() {
                 addMeetinng({name, userEmail, description, alarm: new Date(alarmDate),calendarDate: new Date(timeDate)})
                   .then(()=>{
                     setLoading(false);
+                    triggerLoadData();
                     Alert.alert(
                       "Udalo sie dolaczyc do spotkania!",
                       "",
@@ -101,7 +103,10 @@ return (
       </View>
       <Text style={styles.maintext}>{data}</Text>
 
-      {scanned && <Button title={'Scan again?'} onPress={() => setScanned(false)} color='tomato' />}
+      {scanned && <Button title={'Scan again?'} onPress={() => {
+        setData('');
+        setScanned(false);
+        }} color='tomato' />}
     </View>
   );
 }

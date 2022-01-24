@@ -9,6 +9,7 @@ import {
   Input,
   FormControl,
   Stack,
+  Icon,
 } from 'native-base';
 import { useLoginComponentContext } from './LoginComponentProvider';
 

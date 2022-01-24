@@ -11,12 +11,14 @@ import {
   Stack,
   Spinner,
   Center,
+  Icon,
 } from 'native-base';
-
 
 import { Alert } from 'react-native';
 
 import { useLoginComponentContext } from './LoginComponentProvider';
+
+import { MaterialIcons } from "@expo/vector-icons";
 
 export default function RegisterSecondScreen({navigation}) {
 
@@ -67,13 +69,13 @@ export default function RegisterSecondScreen({navigation}) {
                         <Text style={labelText}>Password</Text>
                     </FormControl.Label>
                     
-                    <Input style={input} onChangeText={(value)=>setRegisterData({...registerData, password: value})} type="password" InputLeftElement={<Icon style={{color: "gray"}} as={<MaterialIcons name="email"/>}/>}/>
+                    <Input style={input} onChangeText={(value)=>setRegisterData({...registerData, password: value})} type="password" InputLeftElement={<Icon style={{color: "gray"}} as={<MaterialIcons name="lock"/>}/>}/>
 
                     <FormControl.Label style={label}>
                         <Text style={labelText}>ConfirmPassword</Text>
                     </FormControl.Label>
                     
-                    <Input style={input} type="password" onChangeText={(value)=>setRegisterData({...registerData, confirmPassword: value})} InputLeftElement={<Icon style={{color: "gray"}} as={<MaterialIcons name="password"/>}/>}/>
+                    <Input style={input} type="password" onChangeText={(value)=>setRegisterData({...registerData, confirmPassword: value})} InputLeftElement={<Icon style={{color: "gray"}} as={<MaterialIcons name="lock"/>}/>}/>
 
                     <Box style={{marginTop: 25}}>
                         <Button style={button} type="submit" onPress={regFunction}>

@@ -28,7 +28,6 @@ export default function HomeTab({navigation})  {
         setMeetingBuff(value);
       })
       .catch(exc=>{
-        console.log(exc);
         Alert.alert(
                     "Error!",
                     "Nie mozna pobrać spotkań.",

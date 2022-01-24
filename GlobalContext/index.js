@@ -35,6 +35,8 @@ export default function GlobalContext({children}) {
 
     const [meetingBuff, setMeetingBuff] = useState([]);
 
+
+
     const triggerLoadData = () =>{
         setTrigger(!trigger);
     };
