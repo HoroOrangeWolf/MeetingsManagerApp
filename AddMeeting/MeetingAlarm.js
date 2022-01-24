@@ -29,7 +29,7 @@ export default function MettingsAlarm({navigation}) {
         <Box style={meetingDetailsScreen}>
 
             <HStack style={{marginBottom: 50}}>
-                <Text style={{...fatText, fontSize: 40}}>Set Notification</Text>
+                <Text style={{...fatText}}>Set Notification</Text>
             </HStack>
 
             <FormControl>
