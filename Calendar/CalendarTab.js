@@ -15,10 +15,9 @@ function CalendarTab({meetings}) {
             meetingBuff.forEach((element)=>{
             const {timeDate} = element;
             const buff = moment(timeDate).format('YYYY-MM-DD').toString();
-            const obj = {};
-            obj[buff] = {selected: true};
+            object[buff] = {selected: true};
 
-            setObject({...object, ...obj});
+            setObject({...object});
         })
     }, [meetingBuff]);
 
